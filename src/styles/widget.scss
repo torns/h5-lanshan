@@ -1,0 +1,29 @@
+.vue-resizable-handle {
+  z-index: 99;
+}
+
+.swiget {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+}
+
+.conf-btn {
+  width: 300px;
+  height: 32px;
+  text-align: center;
+  line-height: 32px;
+  font-size: 13px;
+  color: $theme-color;
+  letter-spacing: 4px;
+  border: solid 1px #fbfbfb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}

@@ -1,0 +1,12 @@
+.header-text {
+    color: $theme-color;
+    margin: 0 10px;
+    color: #82aaf1;
+    font-size: 15px;
+    letter-spacing: 2px;
+    cursor: pointer;
+
+    &:hover {
+        color: #437fea;
+    }
+}

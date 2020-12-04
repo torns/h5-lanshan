@@ -1,0 +1,80 @@
+
+.el-input-number {
+    width: 100px !important;
+}
+
+// tooltip 样式重置
+.el-tooltip__popper.is-light {
+    padding: 4px !important;
+    background: transparent !important;
+    color: $theme-color !important;
+    border: 0px !important;
+    letter-spacing: 2px;
+}
+
+// dialog 样式重置
+.el-dialog__header,
+.el-dialog__footer {
+    border: 1px solid #f6f7f9 !important;
+}
+
+.el-button {
+    padding: 5px 15px !important;
+    border: 1px solid #dcdfe6 !important;
+}
+
+.el-button--primary {
+    background: $theme-color !important;
+}
+
+.dialog-title {
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+// 颜色选择器样式重置
+::v-deep .el-color-picker__trigger .el-icon-arrow-down:before {
+    content: "" !important;
+    font-size: 18px;
+}
+::v-deep .el-color-picker__trigger {
+    border: none;
+}
+::v-deep .el-color-picker__color {
+    border: none;
+    background: #fff !important;
+}
+
+::v-deep .el-color-picker__color-inner {
+    width: 25px;
+    height: 25px;
+    margin: auto;
+    border-radius: 50%;
+    border: 1px solid #cccccc;
+}
+
+// 滑块样式重置
+::v-deep .el-slider {
+    margin-left: 10px;
+    width: 80%;
+}
+
+::v-deep .el-slider__runway {
+    height: 4px;
+}
+
+::v-deep .el-slider__bar {
+    height: 4px;
+    background-color: $theme-color;
+}
+
+::v-deep .el-slider__button-wrapper {
+    top: -16px;
+
+    .el-slider__button {
+        width: 12px;
+        height: 12px;
+        border: 2px solid $theme-color;
+    }
+}
