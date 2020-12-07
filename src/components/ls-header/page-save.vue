@@ -8,13 +8,13 @@
       :append-to-body="true"
     >
       <el-form
-        :model="widgetPage"
+        :model="project"
         ref="ruleForm"
         label-width="95px"
         class="demo-ruleForm"
       >
         <el-form-item
-          label="页面名称："
+          label="项目名称："
           prop="name"
           :rules="{
             required: true,
@@ -22,7 +22,7 @@
             trigger: 'label',
           }"
         >
-          <el-input v-model="widgetPage.name" size="small"></el-input>
+          <el-input v-model="project.name" size="small"></el-input>
         </el-form-item>
         <el-form-item label="页面封面：">
           <upload-image-container
@@ -66,7 +66,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["widgetPage", "widgetRef"]),
+    ...mapGetters(["project", "widgetRef"]),
   },
   watch: {
     show: {
@@ -81,14 +81,14 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(["resetPage"]),
+    ...mapMutations(["resetProject"]),
     save() {
       this.createImg();
-      let pageId = this.widgetPage.id;
+      let pageId = this.project.id;
       this.config = {
         title: pageId ? "修改页面" : "保存页面",
         type: pageId ? "edit" : "add",
-        name: pageId ? this.widgetPage.name : "add",
+        name: pageId ? this.project.name : "add",
       };
       this.show = true;
     },
@@ -110,16 +110,16 @@ export default {
       let result;
       let cover = await base64ToImg({ data: this.coverBase });
 
-      this.$set(this.widgetPage, "cover", cover.data);
-      console.log(this.widgetPage);
+      this.$set(this.project, "cover", cover.data);
+      console.log(this.project);
 
       if (this.config.type == "add") {
-        result = await pageAdd(this.widgetPage);
+        result = await pageAdd(this.project);
       } else {
-        result = await pageEdit(this.widgetPage);
+        result = await pageEdit(this.project);
       }
       if (result.status == 10000) {
-        this.resetPage(result.data);
+        this.resetProject(result.data);
         this.$notify({
           title: "保存成功",
           message: "页面已保存成功，赶快用手机扫二维码预览吧",

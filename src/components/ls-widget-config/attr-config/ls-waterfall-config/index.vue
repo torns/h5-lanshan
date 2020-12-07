@@ -23,6 +23,12 @@
         </operation-list>
         <waterfall-config-attr ref="attr"></waterfall-config-attr>
       </el-form-item>
+      <el-form-item label="跳转" prop="url">
+        <div class="jump-btn" @click="$refs['jump'].open()">
+          <i class="iconfont icon-tiaozhuan"></i>
+        </div>
+      </el-form-item>
+      <jump ref="jump" v-model="config.jump"></jump>
       <el-form-item label="数据类型">
         <el-radio v-model="config.dataType" :label="0">静态数据</el-radio>
         <el-radio v-model="config.dataType" :label="1">接口数据</el-radio>

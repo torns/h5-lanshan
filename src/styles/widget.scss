@@ -41,3 +41,21 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
+
+.jump-btn {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin-top: 5px;
+  text-align: center;
+  color: #fbfbfb;
+  border: solid 1px #fafafa;
+  border-radius: 50%;
+  background: $theme-color;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+
+  i{
+    font-size: 14px;
+  }
+}

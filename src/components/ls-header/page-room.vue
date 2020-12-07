@@ -47,7 +47,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["resetPage"]),
+    ...mapMutations(["resetProject"]),
     getList() {
       pageGetList().then((res) => {
         this.show = true;
@@ -56,13 +56,13 @@ export default {
       });
     },
     changePage(page) {
-      this.resetPage(page);
+      this.resetProject(page);
       this.show = false;
     },
     usePageModel(page) {
       delete page.id;
       delete page.name;
-      this.resetPage(page);
+      this.resetProject(page);
       this.show = false;
     },
     viewPage(page) {

@@ -25,11 +25,11 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["widgetPage"]),
+    ...mapGetters(["project"]),
   },
   methods: {
     createQr() {
-      let id = this.widgetPage.id;
+      let id = this.project.id;
       if (!id) {
         this.imgUrl = "";
         return;

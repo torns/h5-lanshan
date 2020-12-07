@@ -6,7 +6,7 @@
       <page-room></page-room>
       <page-save></page-save>
       <page-view></page-view>
-      <div class="header-text" @click="resetPage()">重置</div>
+      <div class="header-text" @click="resetProject()">重置</div>
     </div>
     <div class="header-right"></div>
   </div>
@@ -24,7 +24,7 @@ export default {
     ...mapGetters(["widgetPage"]),
   },
   methods: {
-    ...mapMutations(['resetPage'])
+    ...mapMutations(['resetProject'])
   }
 };
 </script>

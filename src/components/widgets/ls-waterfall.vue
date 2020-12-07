@@ -10,6 +10,7 @@
         <div
           class="waterfall-item"
           :class="[params.info.length > 0 ? 'waterfall-item-active' : '']"
+          @click="jump(params.jump)"
         >
           <img :src="item.url" alt class="item-img" />
           <div v-if="params.info.length > 0" class="item-info">

@@ -8,9 +8,11 @@
     >
       <!-- {{ jump }} -->
       <div class="tab"></div>
-      <el-radio-group v-model="type">
+      <el-radio-group v-model="jump.type" @change="jump.pathData = ''">
+        <el-radio-button :label="0">无</el-radio-button>
         <el-radio-button :label="1">站外链接</el-radio-button>
-        <el-radio-button :label="2">内部小程序</el-radio-button>
+        <el-radio-button :label="2">内部链接</el-radio-button>
+        <el-radio-button :label="3">内部小程序</el-radio-button>
       </el-radio-group>
       <div class="mt20">
         <el-form
@@ -19,33 +21,47 @@
           label-width="95px"
           class="demo-ruleForm"
         >
-          <template v-if="type == 1">
+         <template v-if="jump.type == 0">
+           不跳转
+         </template>
+          <template v-if="jump.type == 1">
             <el-form-item
               label="网页地址"
-              prop="webPath"
+              prop="pathData"
               :rules="{
                 required: true,
                 message: '不能为空',
                 trigger: 'label',
               }"
             >
-              <el-input v-model="jump.webPath" size="small"></el-input>
+              <el-input v-model="jump.pathData" size="small"></el-input>
             </el-form-item>
           </template>
-          <template v-if="type == 2">
+          <template v-if="jump.type == 2">
+            <el-select v-model="jump.pathData" placeholder="请选择页面">
+              <el-option
+                v-for="item in project.pages"
+                :key="item.value"
+                :label="item.name"
+                :value="item.id"
+              >
+              </el-option>
+            </el-select>
+          </template>
+          <template v-if="jump.type == 3">
             <div class="theme lb-2">
               小程序官方不支持外部H5直接跳转小程序，浏览页面需要小程序web-view内置
             </div>
             <el-form-item
               label="小程序路径"
-              prop="wechatPath"
+              prop="pathData"
               :rules="{
                 required: true,
                 message: '不能为空',
                 trigger: 'label',
               }"
             >
-              <el-input v-model="jump.wechatPath" size="small"></el-input>
+              <el-input v-model="jump.pathData" size="small"></el-input>
             </el-form-item>
           </template>
         </el-form>
@@ -59,48 +75,56 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from "vuex";
+import { jumpData } from "@/config/initData";
+
 export default {
   name: "jump",
-  props: ["webPath", "wechatPath"],
+  model: {
+    prop: "value",
+    event: "change",
+  },
+  props: {
+    value: {
+      type: Object,
+    },
+  },
   data() {
     return {
       show: false,
-      type: undefined,
-      jump: {},
+      jump: {
+        type: 1,
+      },
     };
+  },
+  computed: {
+    ...mapGetters(["project"]),
   },
   watch: {
     show: {
       immediate: true,
       handler(newVal, oldVal) {
         if (!newVal) {
-          this.jump = {};
-          this.type = undefined;
+          this.jump = jumpData;
         } else {
-          this.type = this.webPath ? 1 : this.wechatPath ? 2 : 1;
-          this.jump = {
-            webPath: this.webPath,
-            wechatPath: this.wechatPath,
-          };
         }
+      },
+    },
+    value: {
+      immediate: true,
+      handler(newVal, oldVal) {
+        this.jump = newVal;
       },
     },
   },
   methods: {
     open(data) {
-      console.log("open");
       this.show = true;
     },
     submit() {
       this.$refs["jumpForm"].validate((valid) => {
         if (valid) {
-          if (this.type == 1) {
-            this.$emit("update:webPath", this.jump.webPath);
-            this.$emit("update:wechatPath", "");
-          } else if (this.type == 2) {
-            this.$emit("update:webPath", "");
-            this.$emit("update:wechatPath", this.jump.wechatPath);
-          }
+          this.$emit("change", this.jump);
           this.show = false;
         } else {
           return false;

@@ -6,12 +6,12 @@ import _ from 'lodash';
 const state = {
     project: {},           // 项目
     widgetPage: {},        // 当前页面
-    currentWidget: {},    // 当前拖拽物料
-    chooseWidget: {},     // 当前操作物料
-    widgetList: [],       // 物料选择列表
-    widgetRef: {},        // page页面widget的ref集合
-    widgetLocation: {},
-
+    currentWidget: {},     // 当前拖拽物料
+    chooseWidget: {},      // 当前操作物料
+    widgetList: [],        // 物料选择列表
+    widgetRef: {},         // page页面widget的ref集合
+    widgetLocation: {},    // 拖拽物料入页面位置
+    showConfig: false,     // 物料配置显隐
 }
 
 const mutations = {
@@ -19,33 +19,49 @@ const mutations = {
     resetProject(state, project) {
         if (project) {
             state.project = project
+            state.widgetPage = project.pages[0]
         } else {
             state.project = {
                 id: undefined,     // 项目id
                 name: '',          // 项目名字
-                pages: [
-
-                ]
+                pages: []
             }
             state.widgetPage = state.project.pages[0]
             addPage(state, true)
         }
     },
-    // 新增
+    // 新增页面
     pushPage(state) {
+      
         addPage(state)
+    },
+    // 删除页面
+    deletePage(state, id) {
+        console.log('deletePage');
+        if (!id) {
+            return
+        }
+        let list = state.project.pages
+        console.log(state.project.pages[0]);
+
+        for (let i = 0; i < list.length; i++) {
+            if (list[i].id == id) {
+                state.widgetPage = state.project.pages[0]
+                resetWidget(state)
+                list.splice(i, 1)
+            }
+        }
+
     },
     // 选中页面
     selectedPage(state, id) {
-        console.log('selectedPage');
-        console.log(state.project.pages.find(page => page.id == id));
-
+        state.showConfig = false
         state.widgetPage = state.project.pages.find(page => page.id == id)
+        resetWidget(state)
     },
     // 重置初始页面
     resetPage(state, page) {
-        console.log(page);
-
+        state.showConfig = false
         if (page) {
             state.widgetPage = page
         } else {
@@ -75,6 +91,7 @@ const mutations = {
     },
     // 选中页面当前物料
     setChooseWidget(state, widget) {
+        state.showConfig = true
         state.chooseWidget = widget
     },
     setwidgetLocation(state, location) {
@@ -125,7 +142,7 @@ function widgetPushPage(list, widget) {
 // 页面新增
 function addPage(state, init) {
     let page = {
-        id: getRandomCode(6),
+        id: init ? '000000' : getRandomCode(6),
         name: init ? '主页' : '自定义页面',
         config: {
             backgroundType: 2,
@@ -133,12 +150,19 @@ function addPage(state, init) {
         },
         list: []
     }
+    state.showConfig = false
+    resetWidget(state)
     widgetPushPage(page.list, state.widgetList[0])
     widgetPushPage(page.list, state.widgetList[5])
     widgetPushPage(page.list, state.widgetList[6])
 
     state.project.pages.push(page)
     state.widgetPage = page
+}
+
+// 重置当前操作物料
+function resetWidget(state) {
+    // state.chooseWidget = {}
 }
 
 export default {

@@ -102,16 +102,12 @@
         <el-form-item label="图片地址" prop="url">
           <material-upload v-model="cloneData.url"></material-upload>
         </el-form-item>
-        <el-form-item label="" prop="url">
-          <el-button type="primary" @click="$refs['jump'].open()"
-            >组件跳转</el-button
-          >
+        <el-form-item label="跳转" prop="url">
+          <div class="jump-btn" @click="$refs['jump'].open()">
+            <i class="iconfont icon-tiaozhuan"></i>
+          </div>
         </el-form-item>
-        <jump
-          ref="jump"
-          :webPath.sync="cloneData.webPath"
-          :wechatPath.sync="cloneData.wechatPath"
-        ></jump>
+        <jump ref="jump" v-model="cloneData.jump"></jump>
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="show = false">取 消</el-button>

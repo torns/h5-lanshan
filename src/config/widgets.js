@@ -2,7 +2,7 @@
  * 组件初始配置数据
  */
 import store from '@/store'
-import { btnFontStyle, btnBackgroundStyle, sudokuList, fontStyle, backgroundStyle } from './initData'
+import { btnFontStyle, btnBackgroundStyle, sudokuList, fontStyle, backgroundStyle, jumpData } from './initData'
 
 let widgets = [
     // 图片
@@ -109,20 +109,17 @@ let widgets = [
                 {
                     name: "轮播1",
                     url: "https://st-gdx.dancf.com/gaodingx/0/uxms/design/20200408-165620-bd6c.png",
-                    webPath: "",
-                    wechatPath: "",
+                    jump: jumpData,
                 },
                 {
                     name: "轮播2",
                     url: "https://st-gdx.dancf.com/gaodingx/0/uxms/design/20200220-111024-dded.png",
-                    webPath: "",
-                    wechatPath: "",
+                    jump: jumpData,
                 },
                 {
                     name: "轮播3",
                     url: "https://st-gdx.dancf.com/gaodingx/0/uxms/design/20200602-134906-2aed.png",
-                    webPath: "",
-                    wechatPath: "",
+                    jump: jumpData,
                 },
             ],
             // 接口配置数据
@@ -146,6 +143,9 @@ let widgets = [
             column: 2,
             gutter: 10,
             info: [],
+            // 跳转
+            jump: jumpData,
+            
             // 静态数据
             list: [
                 {

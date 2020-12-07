@@ -202,8 +202,8 @@ export default {
             position: absolute;
             top: 2px;
             right: 2px;
-            width: 100px;
-            height: 40px;
+            width: 90px;
+            height: 33px;
             z-index: 10;
 
             .widget-operation-btns {

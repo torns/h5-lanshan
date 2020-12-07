@@ -1,4 +1,4 @@
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 import { isNull } from '@/utils/tools.js'
 import wx from 'weixin-js-sdk';
 
@@ -50,24 +50,39 @@ export default {
         // }
     },
     methods: {
-        getValue(key) {
+        ...mapMutations(["selectedPage"]),
+        getValue(key, view = false) {
             if (isNull(this.item.params[key])) {
                 return this.baseParams[key]
             } else {
                 return this.item.params[key]
             }
         },
-        jump(data) {
+        jump(data, view = false) {
+            console.log('jump');
+            console.log(data);
             // 跳转外链
-            if (data.webPath) {
+            if (data.type == 1) {
                 let a = document.createElement("a");
-                a.setAttribute("href", data.webPath);
+                a.setAttribute("href", data.pathData);
                 a.click();
                 document.getElementsByTagName("body")[0].appendChild(a);
             }
 
+            if (data.type == 2) {
+                console.log('aaa');
+
+                if (view) {
+
+                } else {
+                    console.log('ccccc');
+
+                    this.selectedPage(data.pathData)
+                }
+            }
+
             // 跳转内部小程序
-            if (data.wechatPath) {
+            if (data.type == 3) {
 
             }
         }

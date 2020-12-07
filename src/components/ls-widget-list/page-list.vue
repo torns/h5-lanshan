@@ -7,9 +7,17 @@
       @click="selectedPage(page.id)"
     >
       <div class="page-name">
-        {{ page.name }}
+        <input class="page-input" type="text" v-model="page.name" />
+        <!-- {{ page.name }} -->
       </div>
-      <!-- <div class="page-operation">x</div> -->
+      <div class="page-operation">
+        <i class="iconfont icon-caozuo f16 mr5"></i>
+        <i
+          v-if="page.id != '000000'"
+          class="iconfont icon-lajitong f16"
+          @click.stop="deletePage(page.id)"
+        ></i>
+      </div>
     </div>
     <div class="page-add flex-center">
       <div class="operation-btn" @click="pushPage">新增页面</div>
@@ -29,7 +37,7 @@ export default {
     ...mapGetters(["project", "widgetPage"]),
   },
   methods: {
-    ...mapMutations(["pushPage", "selectedPage"]),
+    ...mapMutations(["pushPage", "selectedPage", "deletePage"]),
   },
 };
 </script>
@@ -37,34 +45,59 @@ export default {
 <style lang="scss" scoped>
 .page-list {
   height: 100%;
+
   .page {
     display: flex;
     width: 90%;
-    height: 35px;
-    line-height: 35px;
+    height: 46px;
+    line-height: 46px;
     padding: 0 15px;
     margin: 20px auto 0 auto;
+    background: #fafafa80;
     border: solid 1px #dddddd;
     border-radius: 5px;
-    font-size: 13px;
+    font-size: 16px;
     letter-spacing: 2px;
     cursor: pointer;
 
     &:hover {
-      border: solid 1px $theme-color;
+
+      .page-input {
+        color: $theme-color;
+      }
     }
 
     .page-name {
+      display: flex;
+      align-items: center;
       flex: 1;
+
+      .page-input {
+        width: 100px;
+        height: 26px;
+
+        &:focus {
+          color: #000;
+          border: 1px solid $theme-color;
+          border-radius: 3px;
+        }
+      }
     }
 
     .page-operation {
       flex-basis: 30px;
+
+      i:hover {
+        color: $theme-color;
+      }
     }
   }
 
   .page-active {
-    border: solid 1px $theme-color;
+
+    .page-input {
+      color: $theme-color;
+    }
   }
 
   .page-add {

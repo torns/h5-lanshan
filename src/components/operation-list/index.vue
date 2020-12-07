@@ -4,8 +4,8 @@
       <transition-group>
         <div v-for="(item, index) in list" :key="index" class="operation-item">
           <div class="operation-btns">
-            <i class="el-icon-edit" @click="$emit('edit', index)"></i>
-            <i v-if="!hiddenDel" class="el-icon-remove-outline" @click="deleteItem(index)"></i>
+            <i class="iconfont icon-caozuo" @click="$emit('edit', index)"></i>
+            <i v-if="!hiddenDel" class="iconfont icon-lajitong" @click="deleteItem(index)"></i>
           </div>
           <slot :item="item"></slot>
         </div>

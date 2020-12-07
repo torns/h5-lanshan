@@ -79,3 +79,9 @@ export let sudokuList = [
         url: 'https://s3.ax1x.com/2020/11/26/DBn6w6.png'
     },
 ]
+
+// 跳转初始数据
+export let jumpData = {
+    type: 0,
+    pathData: ''
+}

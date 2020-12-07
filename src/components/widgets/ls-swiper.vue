@@ -63,7 +63,7 @@ export default {
       console.log(this.params.source);
     },
     clickItem(data) {
-      this.jump(data);
+      this.jump(data.jump);
     },
   },
 };
