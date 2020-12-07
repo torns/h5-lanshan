@@ -32,34 +32,42 @@
         v-if="isConfig && chooseWidget"
         class="config-operation flex row-around"
       >
-        <el-tooltip
-          class="item"
-          effect="light"
-          content="视图高度自适应"
-          placement="top"
-        >
+        <el-popover class="item" trigger="hover" content="视图高度自适应">
           <div
             class="config-operation-btn flex-center"
             style="background: #82aaf1"
+            slot="reference"
             @click="resetWidgetView(chooseWidget.i)"
           >
             <i class="iconfont icon-shitu"></i>
           </div>
-        </el-tooltip>
-        <el-tooltip class="item" effect="light" content="删除" placement="top">
+        </el-popover>
+        <el-popover class="item" trigger="hover" content="数据池赋值">
+          <div
+            class="config-operation-btn flex-center"
+            style="background: #82aaf1"
+            slot="reference"
+            @click="$refs['pool'].open()"
+          >
+            <i class="iconfont icon-shuju"></i>
+          </div>
+        </el-popover>
+        <el-popover class="item" trigger="hover" content="删除">
           <div
             class="config-operation-btn flex-center"
             style="background: #ee98a2"
+            slot="reference"
             @click="deleteWidget(chooseWidget.i)"
           >
             <i class="iconfont icon-delete"></i>
           </div>
-        </el-tooltip>
+        </el-popover>
       </div>
     </div>
     <div v-if="page == 1">
       <page-config></page-config>
     </div>
+    <data-pool ref="pool"></data-pool>
   </div>
 </template>
 
@@ -96,8 +104,6 @@ export default {
 
 <style lang="scss" scoped>
 .attr-config {
-  height: 100%;
-
   .config-title {
     display: flex;
     height: 40px;
@@ -118,7 +124,9 @@ export default {
 
   .config-body {
     padding: 20px 20px 0 20px;
-    margin-bottom: 80px;
+    // margin-bottom: 80px;
+    max-height: 800px;
+    overflow: auto;
 
     .config-empty {
       img {

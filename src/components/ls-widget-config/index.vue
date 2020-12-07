@@ -38,7 +38,6 @@ export default {
     position: absolute;
     top: 0;
     transform: translateX(100%) ;
-    z-index: 10;
     transition: 0.5s;
     width: 99%;
     height: 100%;
@@ -47,6 +46,7 @@ export default {
   }
 
   .widget-config-body-active {
+    background: #fff;
     transform: translateX(1%);
   }
 }
