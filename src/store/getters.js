@@ -2,6 +2,7 @@ import { pageBackgroundChannel } from '@/utils/styleChannel'
 import { setLocalStorage } from "@/utils/storage";
 
 export default {
+    project: state => state.common.project,
     pageBackground: state => {
         console.log(state.common.widgetPage.config);
         return pageBackgroundChannel(state.common.widgetPage.config)

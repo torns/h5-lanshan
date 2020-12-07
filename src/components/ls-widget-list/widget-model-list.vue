@@ -38,7 +38,7 @@ export default {
         let left = e.clientX - targetRef.offsetLeft;
         let top = e.clientY - targetRef.offsetTop;
         let bottom = 150 - top;
-
+        
         this.setCurrentWidget(name);
         this.setwidgetLocation({ left, top, bottom });
       }, 0);

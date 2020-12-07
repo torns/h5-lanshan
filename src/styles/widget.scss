@@ -27,3 +27,17 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
+
+.operation-btn {
+  width: 90%;
+  height: 32px;
+  text-align: center;
+  line-height: 32px;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: #fbfbfb;
+  border: solid 1px $theme-color;
+  background: $theme-color;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}

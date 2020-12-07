@@ -16,10 +16,11 @@ import { getLocalStorage } from "@/utils/storage";
 export default {
   name: "Home",
   created() {
-    this.resetPage(getLocalStorage("page"));
+    // this.resetPage(getLocalStorage("page"));
+    this.resetProject()
   },
   methods: {
-    ...mapMutations(["resetPage"]),
+    ...mapMutations(["resetPage", "resetProject"]),
   },
 };
 </script>

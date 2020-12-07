@@ -12,7 +12,7 @@
         控件
       </sidebar-item-container>
       <sidebar-item-container icon="icon-yemian1" label="页面" name="page">
-        页面
+        <page-list></page-list>
       </sidebar-item-container>
     </sidebar-container>
   </div>

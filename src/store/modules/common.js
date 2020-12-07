@@ -4,15 +4,44 @@ import _ from 'lodash';
 
 
 const state = {
-    currentWidget: {},    // 当前拖拽组件
-    chooseWidget: {},     // 当前操作组件
-    widgetList: [],       // 组件选择列表
-    widgetPage: {},        // 页面
-    widgetRef: {},         // page页面widget的ref集合
+    project: {},           // 项目
+    widgetPage: {},        // 当前页面
+    currentWidget: {},    // 当前拖拽物料
+    chooseWidget: {},     // 当前操作物料
+    widgetList: [],       // 物料选择列表
+    widgetRef: {},        // page页面widget的ref集合
     widgetLocation: {},
+
 }
 
 const mutations = {
+    // 重置项目
+    resetProject(state, project) {
+        if (project) {
+            state.project = project
+        } else {
+            state.project = {
+                id: undefined,     // 项目id
+                name: '',          // 项目名字
+                pages: [
+
+                ]
+            }
+            state.widgetPage = state.project.pages[0]
+            addPage(state, true)
+        }
+    },
+    // 新增
+    pushPage(state) {
+        addPage(state)
+    },
+    // 选中页面
+    selectedPage(state, id) {
+        console.log('selectedPage');
+        console.log(state.project.pages.find(page => page.id == id));
+
+        state.widgetPage = state.project.pages.find(page => page.id == id)
+    },
     // 重置初始页面
     resetPage(state, page) {
         console.log(page);
@@ -76,7 +105,7 @@ const mutations = {
             console.log('DOM widgetList 还未初始化');
             return
         }
-        // 重置操作组件视图框高度
+        // 重置操作物料视图框高度
         let handleWidgetData = state.widgetPage.list.find(item => item.i == id)
         let handleWidgetRef = state.widgetRef.widgetList.find(item => item.id == id)
         handleWidgetData.h = handleWidgetRef.children[0].offsetHeight
@@ -91,6 +120,25 @@ function widgetPushPage(list, widget) {
     let widgetItem = _.cloneDeep(widget)
     widgetItem.i = getRandomCode()
     list.push(widgetItem)
+}
+
+// 页面新增
+function addPage(state, init) {
+    let page = {
+        id: getRandomCode(6),
+        name: init ? '主页' : '自定义页面',
+        config: {
+            backgroundType: 2,
+            backgroundImg: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2292201188,3933177076&fm=26&gp=0.jpg',
+        },
+        list: []
+    }
+    widgetPushPage(page.list, state.widgetList[0])
+    widgetPushPage(page.list, state.widgetList[5])
+    widgetPushPage(page.list, state.widgetList[6])
+
+    state.project.pages.push(page)
+    state.widgetPage = page
 }
 
 export default {
