@@ -67,7 +67,7 @@
     <div v-if="page == 1">
       <page-config></page-config>
     </div>
-    <data-pool ref="pool"></data-pool>
+    <data-pool ref="pool" v-model="chooseWidget.params.pool_property"></data-pool>
   </div>
 </template>
 
@@ -104,6 +104,7 @@ export default {
 
 <style lang="scss" scoped>
 .attr-config {
+
   .config-title {
     display: flex;
     height: 40px;
@@ -129,6 +130,7 @@ export default {
     overflow: auto;
 
     .config-empty {
+
       img {
         width: 250px;
         height: 250px;

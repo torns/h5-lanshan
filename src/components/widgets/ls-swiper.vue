@@ -56,13 +56,22 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(["resetWidgetView"]),
+    ...mapMutations(["resetWidgetView", "setPoolData"]),
     async initSourceData(id) {
       let res = await remoteGetById({ id });
       this.params.source.data = await getResultData(res.data);
       console.log(this.params.source);
     },
     clickItem(data) {
+      // 是否绑定数据池数据
+      if (this.params.pool_property) {
+        console.log("绑定数据池数据");
+        console.log(this.params.pool_property);
+        this.setPoolData({
+          id: this.params.pool_property,
+          value: data.pool_value,
+        });
+      }
       this.jump(data.jump);
     },
   },

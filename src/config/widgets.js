@@ -145,7 +145,6 @@ let widgets = [
             info: [],
             // 跳转
             jump: jumpData,
-            
             // 静态数据
             list: [
                 {

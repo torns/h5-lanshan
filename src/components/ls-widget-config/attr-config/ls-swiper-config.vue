@@ -107,6 +107,13 @@
             <i class="iconfont icon-tiaozhuan"></i>
           </div>
         </el-form-item>
+        <el-form-item label="数据池赋值数据" prop="url">
+          <el-input
+            v-model="cloneData.pool_value"
+            size="small"
+            style="width: 250px"
+          ></el-input>
+        </el-form-item>
         <jump ref="jump" v-model="cloneData.jump"></jump>
       </el-form>
       <span slot="footer" class="dialog-footer">

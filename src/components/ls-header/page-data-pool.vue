@@ -40,6 +40,7 @@
           ></el-input>
         </div>
       </div>
+      {{poolData}}
       <span slot="footer" class="dialog-footer">
         <el-button @click="show = false">取 消</el-button>
         <el-button type="primary" @click="submit">确 定</el-button>
