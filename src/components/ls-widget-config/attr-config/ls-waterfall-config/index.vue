@@ -28,9 +28,6 @@
           class="iconfont icon-tiaozhuan f20 pointer"
           @click="$refs['jump'].open()"
         ></i>
-        <!-- <div class="jump-btn" @click="$refs['jump'].open()">
-          <i class="iconfont icon-tiaozhuan"></i>
-        </div> -->
       </el-form-item>
       <jump ref="jump" v-model="config.jump"></jump>
       <el-form-item label="数据类型">
