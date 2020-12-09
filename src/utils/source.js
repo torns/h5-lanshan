@@ -1,4 +1,5 @@
 import { Get, Post } from '@/utils/request'
+import store from '@/store'
 import Vue from 'vue';
 
 // 获取远程数据(支持跨域)
@@ -7,6 +8,27 @@ export async function getSourceData(option) {
         method: option.method,
         url: option.url,
     }
+
+    // 整合请求参数
+    if (option.params.length > 0) {
+        let params = option.params.map(item => {
+            let result = { key: item.key }
+            if (item.custom) {
+                let data = store.state.pool.poolData.find(d => d.id == item.pool_property.id)
+                result.value = data.value
+            } else {
+                result.value = item.value
+            }
+            return result
+        })
+        data.params = {}
+        params.map(p => {
+            data.params[p.key] = p.value
+        })
+        // console.log('参数');
+        // console.log(data.params);
+    }
+
     let result = await Post("http://localhost:3000/source/cross", data)
     return result
 }

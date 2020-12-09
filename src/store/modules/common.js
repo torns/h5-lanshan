@@ -32,7 +32,6 @@ const mutations = {
     },
     // 新增页面
     pushPage(state) {
-      
         addPage(state)
     },
     // 删除页面
@@ -113,6 +112,10 @@ const mutations = {
             }
         }
         state.chooseWidget = {}
+    },
+    // 隐藏物料配置
+    hiddenConfig(state) {
+        state.showConfig = false
     },
     setWidgetRef(state, refs) {
         state.widgetRef = refs

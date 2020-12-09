@@ -6,6 +6,7 @@
       :show="show"
       :visible.sync="visible"
       :close-on-click-modal="false"
+      :append-to-body="true"
       @close="$emit('update:show', false)"
     >
       <div class="flex">
@@ -72,6 +73,9 @@
                 type="textarea"
                 :rows="1"
               ></el-input>
+            </el-form-item>
+            <el-form-item label="参数列表" prop="params">
+              <params-list v-model="form.params"></params-list>
             </el-form-item>
           </el-form>
         </div>

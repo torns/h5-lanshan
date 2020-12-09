@@ -10,7 +10,7 @@
         <div
           class="waterfall-item"
           :class="[params.info.length > 0 ? 'waterfall-item-active' : '']"
-          @click="jump(params.jump)"
+          @click="clickItem(item)"
         >
           <img :src="item.url" alt class="item-img" />
           <div v-if="params.info.length > 0" class="item-info">
@@ -44,21 +44,40 @@ export default {
       show: true,
     };
   },
-  watch: {
-    "params.source.id": {
-      handler() {
-        if (this.params.source.id) {
-          this.initSourceData(this.params.source.id);
-        }
-      },
-      immediate: true,
-    },
+  created() {
+    if (this.params.source.id) {
+      this.initSourceData(this.params.source.id);
+    }
   },
+  // watch: {
+  //   "params.source.id": {
+  //     handler() {
+  //       if (this.params.source.id) {
+  //         this.initSourceData(this.params.source.id);
+  //       }
+  //     },
+  //     immediate: true,
+  //   },
+  // },
   methods: {
-    ...mapMutations(["resetWidgetView"]),
+    ...mapMutations(["resetWidgetView", "setPoolData"]),
     async initSourceData(id) {
       let res = await remoteGetById({ id });
+      console.log('aaaaaaaaa');
+      console.log(res);
+      
+      
       this.params.source.data = await getResultData(res.data);
+    },
+    clickItem(data) {
+      // 是否绑定数据池数据
+      if (this.params.pool_property) {
+        this.setPoolData({
+          id: this.params.pool_property,
+          value: data.pool_value,
+        });
+      }
+      this.jump(this.params.jump);
     },
   },
 };

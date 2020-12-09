@@ -5,6 +5,7 @@
       width="35%"
       :show="show"
       :visible.sync="visible"
+      :append-to-body="true"
       @close="$emit('update:show', false)"
     >
       <div>

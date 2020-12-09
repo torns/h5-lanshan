@@ -65,8 +65,6 @@ export default {
     clickItem(data) {
       // 是否绑定数据池数据
       if (this.params.pool_property) {
-        console.log("绑定数据池数据");
-        console.log(this.params.pool_property);
         this.setPoolData({
           id: this.params.pool_property,
           value: data.pool_value,

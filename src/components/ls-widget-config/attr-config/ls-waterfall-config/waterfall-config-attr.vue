@@ -1,6 +1,11 @@
 <template>
   <div class="waterfall-config-attr">
-    <el-dialog title="字段设置" :visible.sync="show" width="30%">
+    <el-dialog
+      title="字段设置"
+      :visible.sync="show"
+      width="30%"
+      :append-to-body="true"
+    >
       <el-form :model="form" ref="form" label-width="120px">
         <el-form-item
           label="字段名"

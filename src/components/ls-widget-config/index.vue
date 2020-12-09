@@ -4,6 +4,7 @@
       class="widget-config-body"
       :class="showConfig ? 'widget-config-body-active' : ''"
     >
+    {{showConfig}}
       <attr-config v-if="showConfig"></attr-config>
     </div>
   </div>

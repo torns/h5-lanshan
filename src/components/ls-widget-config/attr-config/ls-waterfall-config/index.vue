@@ -58,7 +58,7 @@
     </el-form>
 
     <!-- 编译 -->
-    <el-dialog width="25%" :visible.sync="show" :close-on-click-modal="false">
+    <el-dialog width="25%" :visible.sync="show" :close-on-click-modal="false" :append-to-body='true'>
       <div slot="title" class="dialog-title">编辑数据源</div>
       <el-form
         :model="cloneData"
@@ -107,6 +107,8 @@
 
 <script>
 import { getRandomCode } from "@/utils/tools";
+import { remoteGetById } from "@/api/remote";
+import { getResultData } from "@/utils/source";
 
 export default {
   name: "ls-waterfall-config",
@@ -173,6 +175,11 @@ export default {
     },
     select(id) {
       this.config.source.id = id;
+      this.getSourceData(id)
+    },
+    async getSourceData(id) {
+      let res = await remoteGetById({ id });
+      this.params.source.data = await getResultData(res.data);
     },
   },
 };

@@ -1,6 +1,8 @@
 import { mapGetters, mapMutations } from "vuex";
 import { isNull } from '@/utils/tools.js'
 import wx from 'weixin-js-sdk';
+import { remoteGetById } from "@/api/remote";
+import { getResultData } from "@/utils/source";
 
 export default {
     props: {
@@ -50,14 +52,15 @@ export default {
         // }
     },
     methods: {
-        ...mapMutations(["selectedPage"]),
-        getValue(key, view = false) {
-            if (isNull(this.item.params[key])) {
-                return this.baseParams[key]
-            } else {
-                return this.item.params[key]
-            }
-        },
+        ...mapMutations(["selectedPage", "hiddenConfig"]),
+        // getValue(key, view = false) {
+        //     if (isNull(this.item.params[key])) {
+        //         return this.baseParams[key]
+        //     } else {
+        //         return this.item.params[key]
+        //     }
+        // },
+        // 跳转
         jump(data, view = false) {
             console.log('jump');
             console.log(data);
@@ -76,8 +79,10 @@ export default {
 
                 } else {
                     console.log('ccccc');
-
                     this.selectedPage(data.pathData)
+                    setTimeout(() => {
+                        this.hiddenConfig()
+                    }, 0);
                 }
             }
 
@@ -85,6 +90,19 @@ export default {
             if (data.type == 3) {
 
             }
+        },
+        // 获取远程数据
+        async getSourceData() {
+            let res = await remoteGetById({ id });
+            // let data = res.data
+            // data.params.map(item=>{
+            //     if(item.custom){
+
+            //     }
+            // })
+            // console.log('aaaaaaaaa');
+            // console.log(res);
+            this.params.source.data = await getResultData(res.data);
         }
     }
 }

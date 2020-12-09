@@ -17,7 +17,7 @@
     <!-- 组件配置 -->
     <div v-if="page == 0" class="config-body">
       <component
-        v-if="isConfig && chooseWidget"
+        v-if="isConfig && chooseWidget && chooseWidget.name"
         :is="configName"
         :params="chooseWidget.params"
       ></component>
