@@ -6,7 +6,6 @@
       <page-room></page-room>
       <page-save></page-save>
       <page-view></page-view>
-      <page-data-pool></page-data-pool>
       <div class="header-text" @click="resetProject()">重置</div>
     </div>
     <div class="header-right"></div>

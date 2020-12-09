@@ -103,11 +103,15 @@
           <material-upload v-model="cloneData.url"></material-upload>
         </el-form-item>
         <el-form-item label="跳转" prop="url">
-          <div class="jump-btn" @click="$refs['jump'].open()">
+          <i
+            class="iconfont icon-tiaozhuan f20 pointer"
+            @click="$refs['jump'].open()"
+          ></i>
+          <!-- <div class="jump-btn" @click="$refs['jump'].open()">
             <i class="iconfont icon-tiaozhuan"></i>
-          </div>
+          </div> -->
         </el-form-item>
-        <el-form-item label="数据池赋值数据" prop="url">
+        <el-form-item label="数据池赋值数据" prop="pool_value">
           <el-input
             v-model="cloneData.pool_value"
             size="small"

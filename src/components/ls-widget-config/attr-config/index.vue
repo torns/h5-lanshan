@@ -42,7 +42,7 @@
             <i class="iconfont icon-shitu"></i>
           </div>
         </el-popover>
-        <el-popover class="item" trigger="hover" content="数据池赋值">
+        <el-popover class="item" trigger="hover" content="数据池">
           <div
             class="config-operation-btn flex-center"
             style="background: #82aaf1"

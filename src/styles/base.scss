@@ -38,7 +38,7 @@ page {
 }
 
 // width 10~100 px
-@for $i from 10 through 100 {
+@for $i from 10 through 300 {
     .w#{$i} {
         width: #{$i}px !important;
     }
@@ -390,4 +390,8 @@ page {
     .ellipsis-#{$i} {
         @include text-clamp($i);
     }
+}
+
+.pointer {
+    cursor: pointer;
 }

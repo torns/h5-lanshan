@@ -24,9 +24,13 @@
         <waterfall-config-attr ref="attr"></waterfall-config-attr>
       </el-form-item>
       <el-form-item label="跳转" prop="url">
-        <div class="jump-btn" @click="$refs['jump'].open()">
+        <i
+          class="iconfont icon-tiaozhuan f20 pointer"
+          @click="$refs['jump'].open()"
+        ></i>
+        <!-- <div class="jump-btn" @click="$refs['jump'].open()">
           <i class="iconfont icon-tiaozhuan"></i>
-        </div>
+        </div> -->
       </el-form-item>
       <jump ref="jump" v-model="config.jump"></jump>
       <el-form-item label="数据类型">
@@ -58,7 +62,12 @@
     </el-form>
 
     <!-- 编译 -->
-    <el-dialog width="25%" :visible.sync="show" :close-on-click-modal="false" :append-to-body='true'>
+    <el-dialog
+      width="25%"
+      :visible.sync="show"
+      :close-on-click-modal="false"
+      :append-to-body="true"
+    >
       <div slot="title" class="dialog-title">编辑数据源</div>
       <el-form
         :model="cloneData"
@@ -175,7 +184,7 @@ export default {
     },
     select(id) {
       this.config.source.id = id;
-      this.getSourceData(id)
+      this.getSourceData(id);
     },
     async getSourceData(id) {
       let res = await remoteGetById({ id });
