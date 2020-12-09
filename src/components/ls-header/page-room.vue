@@ -36,7 +36,7 @@
 
 <script>
 import { pageAdd, pageEdit, pageGetList } from "@/api/page";
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "page-room",
@@ -47,7 +47,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["resetProject"]),
+    ...mapActions(["resetProject"]),
     getList() {
       pageGetList().then((res) => {
         this.show = true;

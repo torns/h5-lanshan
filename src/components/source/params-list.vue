@@ -10,19 +10,19 @@
         inactive-text="自定义"
       >
       </el-switch>
+      {{ item.pool_property }}
+      {{ poolData }}
+
       <el-select
         v-model="item.pool_property"
         v-if="item.custom"
+        value-key="id"
         size="small"
         class="ml15"
         style="width: 180px"
         placeholder="选择赋值的数据池数据"
       >
-        <el-option
-          v-for="item in poolData"
-          :label="item.label"
-          :value="item"
-        >
+        <el-option v-for="item in poolData" :label="item.label" :value="item">
         </el-option>
       </el-select>
       <el-input

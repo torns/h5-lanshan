@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "ls-header",
@@ -25,7 +25,7 @@ export default {
     ...mapGetters(["widgetPage"]),
   },
   methods: {
-    ...mapMutations(['resetProject'])
+    ...mapActions(['resetProject'])
   }
 };
 </script>

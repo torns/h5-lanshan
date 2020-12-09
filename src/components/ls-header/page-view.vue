@@ -7,7 +7,7 @@
       @show="createQr"
     >
       <img v-if="imgUrl" class="qr-img" :src="imgUrl" alt="" />
-      <div v-else class="none-page flex-center">请先保存页面</div>
+      <div v-else class="none-page flex-center">请先保存项目才能预览</div>
       <span class="header-text" slot="reference">预览</span>
     </el-popover>
   </div>
@@ -30,7 +30,7 @@ export default {
   methods: {
     createQr() {
       let id = this.project.id;
-      if (!id) {
+      if (!this.project.view) {
         this.imgUrl = "";
         return;
       }

@@ -10,17 +10,18 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations, mapActions } from "vuex";
 import { getLocalStorage } from "@/utils/storage";
 
 export default {
   name: "Home",
   created() {
     // this.resetPage(getLocalStorage("page"));
-    this.resetProject()
+    this.resetProject();
   },
   methods: {
-    ...mapMutations(["resetPage", "resetProject"]),
+    ...mapMutations(["resetPage"]),
+    ...mapActions(["resetProject"]),
   },
 };
 </script>

@@ -46,27 +46,17 @@ export default {
   },
   created() {
     if (this.params.source.id) {
+      this.params.source.data = [];
       this.initSourceData(this.params.source.id);
     }
   },
-  // watch: {
-  //   "params.source.id": {
-  //     handler() {
-  //       if (this.params.source.id) {
-  //         this.initSourceData(this.params.source.id);
-  //       }
-  //     },
-  //     immediate: true,
-  //   },
-  // },
   methods: {
     ...mapMutations(["resetWidgetView", "setPoolData"]),
     async initSourceData(id) {
       let res = await remoteGetById({ id });
-      console.log('aaaaaaaaa');
+      console.log("aaaaaaaaa");
       console.log(res);
-      
-      
+
       this.params.source.data = await getResultData(res.data);
     },
     clickItem(data) {

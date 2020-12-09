@@ -107,9 +107,7 @@ export default {
     // 设置组件属性
     setConfig(id) {
       let widget = this.widgetPage.list.find((item) => item.i == id);
-      console.log(widget);
-
-      this.setChooseWidget(widget);
+      widget && this.setChooseWidget(widget);
     },
   },
 };

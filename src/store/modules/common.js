@@ -1,4 +1,5 @@
 import { getRandomCode } from '@/utils/tools.js'
+import { poolGetById } from '@/api/pool.js'
 import _ from 'lodash';
 
 
@@ -15,21 +16,7 @@ const state = {
 }
 
 const mutations = {
-    // 重置项目
-    resetProject(state, project) {
-        if (project) {
-            state.project = project
-            state.widgetPage = project.pages[0]
-        } else {
-            state.project = {
-                id: undefined,     // 项目id
-                name: '',          // 项目名字
-                pages: []
-            }
-            state.widgetPage = state.project.pages[0]
-            addPage(state, true)
-        }
-    },
+
     // 新增页面
     pushPage(state) {
         addPage(state)
@@ -111,11 +98,8 @@ const mutations = {
                 list.splice(i, 1)
             }
         }
-        state.chooseWidget = {}
-    },
-    // 隐藏物料配置
-    hiddenConfig(state) {
-        state.showConfig = false
+        state.chooseWidget = {
+        }
     },
     setWidgetRef(state, refs) {
         state.widgetRef = refs
@@ -133,6 +117,32 @@ const mutations = {
         // 刷新 vue-grid-layout 布局
         state.widgetRef.gridLayout.layoutUpdate()
     }
+}
+
+const actions = {
+    // 重置项目
+    async resetProject({ state, commit }, project) {
+        console.log('重置项目');
+        console.log(project);
+
+        if (project) {
+            state.project = project
+            // 查询重置项目所属数据池
+            let res = await poolGetById({ id: project.id })
+            commit('replacePool', res.data.list)
+            // 跳转首页
+            state.widgetPage = project.pages[0]
+        } else {
+            state.project = {
+                id: getRandomCode(12),     // 项目id
+                name: '',          // 项目名字
+                pages: []
+            }
+            state.widgetPage = state.project.pages[0]
+            addPage(state, true)
+            console.log(state);
+        }
+    },
 }
 
 // 物料加入页面
@@ -170,5 +180,6 @@ function resetWidget(state) {
 
 export default {
     state,
-    mutations
+    mutations,
+    actions
 }

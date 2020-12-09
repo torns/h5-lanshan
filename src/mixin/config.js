@@ -52,7 +52,7 @@ export default {
         // }
     },
     methods: {
-        ...mapMutations(["selectedPage", "hiddenConfig"]),
+        ...mapMutations(["selectedPage"]),
         // getValue(key, view = false) {
         //     if (isNull(this.item.params[key])) {
         //         return this.baseParams[key]
@@ -80,9 +80,6 @@ export default {
                 } else {
                     console.log('ccccc');
                     this.selectedPage(data.pathData)
-                    setTimeout(() => {
-                        this.hiddenConfig()
-                    }, 0);
                 }
             }
 

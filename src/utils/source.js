@@ -10,7 +10,7 @@ export async function getSourceData(option) {
     }
 
     // 整合请求参数
-    if (option.params.length > 0) {
+    if (option.params && option.params.length > 0) {
         let params = option.params.map(item => {
             let result = { key: item.key }
             if (item.custom) {

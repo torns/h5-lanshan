@@ -19,7 +19,7 @@
       <component
         v-if="isConfig && chooseWidget && chooseWidget.name"
         :is="configName"
-        :params="chooseWidget.params"
+        :params="widgetParams"
       ></component>
       <!-- 未找到组件 -->
       <div v-else class="config-empty flex-column row-center">
@@ -67,7 +67,11 @@
     <div v-if="page == 1">
       <page-config></page-config>
     </div>
-    <data-pool ref="pool" v-model="chooseWidget.params.pool_property"></data-pool>
+    <data-pool
+      ref="pool"
+      v-if="chooseWidget.params"
+      v-model="chooseWidget.params.pool_property"
+    ></data-pool>
   </div>
 </template>
 
@@ -83,11 +87,18 @@ export default {
   computed: {
     ...mapGetters(["chooseWidget"]),
     isConfig() {
-      return typeof this.chooseWidget.name == "string";
+      return typeof this.chooseWidget?.name == "string";
     },
     configName() {
-      return this.chooseWidget.name + "-config";
+      return this.chooseWidget?.name + "-config";
     },
+    widgetParams(){
+      console.log('widgetParams...');
+      
+      console.log(this.chooseWidget.params);
+      
+      return this.chooseWidget.params?this.chooseWidget.params:{}
+    }
   },
   watch: {
     chooseWidget: {
@@ -104,7 +115,6 @@ export default {
 
 <style lang="scss" scoped>
 .attr-config {
-
   .config-title {
     display: flex;
     height: 40px;
@@ -130,7 +140,6 @@ export default {
     overflow: auto;
 
     .config-empty {
-
       img {
         width: 250px;
         height: 250px;
