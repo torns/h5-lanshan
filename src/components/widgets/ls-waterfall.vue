@@ -1,5 +1,5 @@
 <template>
-  <div class="ls-waterfall" ref="widgetRef">
+  <div class="ls-waterfall" ref="widgetRef" v-loading="loading">
     <material-waterfall
       v-if="show"
       :value="params.dataType == 1 ? params.source.data : params.list"
@@ -12,7 +12,14 @@
           :class="[params.info.length > 0 ? 'waterfall-item-active' : '']"
           @click="clickItem(item)"
         >
-          <img :src="item.url" alt class="item-img" />
+          <img
+            alt
+            class="item-img"
+            onerror="this.src = 'https://st-gdx.dancf.com/gaodingx/0/uxms/design/20200408-165620-bd6c.png'"
+            :src="item.url"
+            v-loading="item.loading"
+            element-loading-spinner="el-icon-loading"
+          />
           <div v-if="params.info.length > 0" class="item-info">
             <div
               class="item-info-message"
@@ -42,6 +49,7 @@ export default {
   data() {
     return {
       show: true,
+      loading: false,
     };
   },
   created() {
@@ -53,11 +61,11 @@ export default {
   methods: {
     ...mapMutations(["resetWidgetView", "setPoolData"]),
     async initSourceData(id) {
+      this.loading = true;
       let res = await remoteGetById({ id });
-      console.log("aaaaaaaaa");
-      console.log(res);
 
       this.params.source.data = await getResultData(res.data);
+      this.loading = false;
     },
     clickItem(data) {
       // 是否绑定数据池数据

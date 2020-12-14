@@ -18,9 +18,6 @@ import {
 export default {
   name: "ls-top-bar",
   mixins: [config],
-  data() {
-    return {};
-  },
   computed: {
     styleContainer() {
       return {

@@ -10,6 +10,7 @@ const state = {
     currentWidget: {},     // 当前拖拽物料
     chooseWidget: {},      // 当前操作物料
     widgetList: [],        // 物料选择列表
+    // controlList: [],        // 控件选择列表
     widgetRef: {},         // page页面widget的ref集合
     widgetLocation: {},    // 拖拽物料入页面位置
     showConfig: false,     // 物料配置显隐
@@ -167,7 +168,7 @@ function addPage(state, init) {
     resetWidget(state)
     widgetPushPage(page.list, state.widgetList[0])
     widgetPushPage(page.list, state.widgetList[5])
-    widgetPushPage(page.list, state.widgetList[6])
+    widgetPushPage(page.list, state.widgetList[3])
 
     state.project.pages.push(page)
     state.widgetPage = page

@@ -1,13 +1,11 @@
 <template>
   <div class="test">
-    <sidebar-container v-model="active">
-      <sidebar-item-container icon="icon-yemian-copy" label="物料" name="material">
-        物料
-      </sidebar-item-container>
-      <sidebar-item-container icon="icon-kongjian" label="控件" name="controls">
-        控件
-      </sidebar-item-container>
-    </sidebar-container>
+    <img
+      alt
+      class="item-img"
+      src="http://116.62.142.85:8090/flow-4.jpg"
+      onerror="this.src = 'https://st-gdx.dancf.com/gaodingx/0/uxms/design/20200408-165620-bd6c.png'"
+    />
   </div>
 </template>
 

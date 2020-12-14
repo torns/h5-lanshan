@@ -4,14 +4,28 @@ import router from './router'
 import store from './store'
 import { Get, Post } from '@/utils/request'
 import _ from 'lodash';
-import '@/styles/index.scss'
 import '@/utils/registered'
 import '@/config/widgets.js'
+import '@/styles/index.scss'
 
+
+// element
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 import '@/styles/element-#82AAF1/index.css'
 Vue.use(Element)
+
+
+// vant
+import Vant from 'vant';
+import 'vant/lib/index.css';
+Vue.use(Vant);
+
+import * as filters from '@/utils/filters.js'
+
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
 
 Vue.config.productionTip = false
 Vue.prototype._ = _

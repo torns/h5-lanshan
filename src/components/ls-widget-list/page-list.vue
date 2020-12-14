@@ -56,12 +56,10 @@ export default {
     background: #fafafa80;
     border: solid 1px #dddddd;
     border-radius: 5px;
-    font-size: 16px;
-    letter-spacing: 2px;
+    font-size: 13px;
     cursor: pointer;
 
     &:hover {
-
       .page-input {
         color: $theme-color;
       }
@@ -94,7 +92,6 @@ export default {
   }
 
   .page-active {
-
     .page-input {
       color: $theme-color;
     }

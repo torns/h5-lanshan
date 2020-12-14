@@ -1,5 +1,6 @@
 <template>
   <div class="widget-list">
+    <div class="widget-list-title flex-center f14 theme mb20">常用模块</div>
     <div
       class="widget-list-item"
       v-for="item in widgetList"
@@ -8,8 +9,8 @@
       :ref="item.name"
       @dragstart="setWidget"
     >
-      <div class="widget-list-item-img">
-        <img class="w-100" :name="item.name" :src="item.img" alt="" />
+      <div class="widget-list-item-img mt10">
+         <i class="iconfont f24 theme" :class="item.icon"></i>
       </div>
       <div class="widget-list-item-name">{{ item.label }}</div>
     </div>
@@ -38,7 +39,7 @@ export default {
         let left = e.clientX - targetRef.offsetLeft;
         let top = e.clientY - targetRef.offsetTop;
         let bottom = 150 - top;
-        
+
         this.setCurrentWidget(name);
         this.setwidgetLocation({ left, top, bottom });
       }, 0);
@@ -49,6 +50,7 @@ export default {
 
 <style lang="scss" scoped>
 .widget-list {
+  flex: 1;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
@@ -57,13 +59,21 @@ export default {
   padding: 10px;
   overflow: auto;
 
+  .widget-list-title {
+    width: 255px;
+    height: 38px;
+    margin: 0 auto;
+    border: 1px solid #e5e9f2;
+    border-radius: 20px;
+  }
+
   .widget-list-item {
     display: flex;
     flex-direction: column;
-    flex-basis: 45%;
-    height: 150px;
+    width: 80px;
+    height: 80px;
     position: relative;
-    margin: 0 5px 15px 5px;
+    margin-bottom: 20px;
     overflow: hidden;
     box-shadow: 1px 0 8px rgba(0, 0, 0, 0.2);
     cursor: move;
@@ -71,12 +81,6 @@ export default {
     &:hover {
       cursor: move;
       transition: border 0.3s;
-
-      .widget-list-item-img {
-        img {
-          transform: scale(1.15);
-        }
-      }
     }
 
     .widget-list-item-img {
@@ -97,8 +101,8 @@ export default {
       height: 23px;
       text-align: center;
       color: $theme-color;
-      font-size: 13px;
-      letter-spacing: 2px;
+      font-size: 12px;
+      letter-spacing: 1px;
     }
   }
 }

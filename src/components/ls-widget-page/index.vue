@@ -185,7 +185,7 @@ export default {
               height: 100%;
               border: solid 2px transparent;
               cursor: move;
-              z-index: 10;
+              z-index: 2000;
               pointer-events: none;
             }
 

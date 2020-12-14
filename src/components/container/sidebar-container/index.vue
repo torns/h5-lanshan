@@ -89,7 +89,7 @@ export default {
   .sidebar-meau {
     box-sizing: border-box;
     position: relative;
-    width: 64px;
+    flex-basis: 64px!important;
     height: 100%;
     border-right: solid 2px #f3f3f3;
 
