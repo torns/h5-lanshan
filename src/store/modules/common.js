@@ -1,5 +1,6 @@
 import { getRandomCode } from '@/utils/tools.js'
 import { poolGetById } from '@/api/pool.js'
+import controls from '@/config/controls'
 import _ from 'lodash';
 
 
@@ -10,7 +11,7 @@ const state = {
     currentWidget: {},     // 当前拖拽物料
     chooseWidget: {},      // 当前操作物料
     widgetList: [],        // 物料选择列表
-    // controlList: [],        // 控件选择列表
+    // controlList: [],    // 控件选择列表
     widgetRef: {},         // page页面widget的ref集合
     widgetLocation: {},    // 拖拽物料入页面位置
     showConfig: false,     // 物料配置显隐
@@ -137,7 +138,9 @@ const actions = {
             state.project = {
                 id: getRandomCode(12),     // 项目id
                 name: '',          // 项目名字
-                pages: []
+                pages: [],
+                controls: controls,  // 控件
+
             }
             state.widgetPage = state.project.pages[0]
             addPage(state, true)

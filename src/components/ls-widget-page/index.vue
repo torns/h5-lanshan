@@ -9,50 +9,57 @@
         @drop="drop($event)"
         @dragover.prevent
       >
-        <grid-layout
-          ref="gridLayout"
-          class="canvas-page-list"
-          :layout.sync="widgetPage.list"
-          :col-num="375"
-          :max-w="1"
-          :row-height="1"
-          :is-draggable="true"
-          :is-resizable="true"
-          :is-mirrored="false"
-          :vertical-compact="true"
-          :margin="[0, 0]"
-          :use-css-transforms="true"
-        >  
-          <grid-item
-            class="canvas-page-item"
-            v-for="item in widgetPage.list"
-            :x="item.x"
-            :y="item.y"
-            :w="item.w"
-            :h="item.h"
-            :i="item.i"
-            :key="item.i"
+        <controls></controls>
+        <!-- 页面内容容器 -->
+        <div class="page-wrapper">
+          <grid-layout
+            ref="gridLayout"
+            class="canvas-page-list"
+            :layout.sync="widgetPage.list"
+            :col-num="375"
+            :max-w="1"
+            :row-height="1"
+            :is-draggable="true"
+            :is-resizable="true"
+            :is-mirrored="false"
+            :vertical-compact="true"
+            :margin="[0, 0]"
+            :use-css-transforms="true"
           >
-            <div
-              class="widget-view"
-              :id="item.i"
-              ref="widgetList"
-              @click="setConfig(item.i)"
+            <grid-item
+              class="canvas-page-item"
+              v-for="item in widgetPage.list"
+              :x="item.x"
+              :y="item.y"
+              :w="item.w"
+              :h="item.h"
+              :i="item.i"
+              :key="item.i"
             >
-              <component
-                :ref="item.id"
-                :is="item.name"
-                :item="item"
-              ></component>
-            </div>
-            <div class="widget-operation">
-              <div class="widget-operation-btns">
-                <i class="iconfont icon-caozuo" @click="setConfig(item.i)"></i>
-                <i class="iconfont icon-lajitong"></i>
+              <div
+                class="widget-view"
+                :id="item.i"
+                ref="widgetList"
+                @click="setConfig(item.i)"
+              >
+                <component
+                  :ref="item.id"
+                  :is="item.name"
+                  :item="item"
+                ></component>
               </div>
-            </div>
-          </grid-item>
-        </grid-layout>
+              <div class="widget-operation">
+                <div class="widget-operation-btns">
+                  <i
+                    class="iconfont icon-caozuo"
+                    @click="setConfig(item.i)"
+                  ></i>
+                  <i class="iconfont icon-lajitong"></i>
+                </div>
+              </div>
+            </grid-item>
+          </grid-layout>
+        </div>
       </div>
     </div>
   </div>
@@ -120,6 +127,10 @@ export default {
 //   max-width: 375px !important;
 // }
 
+*::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
+
 .canvas {
   position: relative;
   flex: 1;
@@ -143,85 +154,91 @@ export default {
     .canvas-page {
       position: relative;
       width: 375px;
-      min-height: 640px;
+      height: 667px;
       margin: 50px auto;
       box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
       background-color: #fff;
 
-      .canvas-page-list {
+      .page-wrapper {
         width: 100%;
-        height: 100%;
+        height: calc(100% - 48px);
+        overflow: auto;
 
-        .canvas-page-item {
-          position: relative;
+        .canvas-page-list {
           width: 100%;
           height: 100%;
-          max-width: 375px;
-          overflow: hidden;
 
-          &:hover {
-            .widget-operation {
-              // display: block;
-              opacity: 1;
-
-              .widget-operation-btns {
-                transform: translateX(0);
-              }
-            }
-          }
-
-          .widget-view {
+          .canvas-page-item {
             position: relative;
             width: 100%;
             height: 100%;
+            max-width: 375px;
+            overflow: hidden;
 
-            &::after {
-              content: "";
-              box-sizing: border-box;
+            &:hover {
+              .widget-operation {
+                // display: block;
+                opacity: 1;
+
+                .widget-operation-btns {
+                  transform: translateX(0);
+                }
+              }
+            }
+
+            .widget-view {
+              position: relative;
+              width: 100%;
+              height: 100%;
+
+              &::after {
+                content: "";
+                box-sizing: border-box;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: solid 2px transparent;
+                cursor: move;
+                z-index: 2000;
+                pointer-events: none;
+              }
+
+              &:hover::after {
+                border: solid 2px #3080de;
+              }
+            }
+
+            .widget-operation {
+              // display: none;
+              opacity: 0;
               position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              border: solid 2px transparent;
-              cursor: move;
-              z-index: 2000;
-              pointer-events: none;
-            }
+              top: 2px;
+              right: 2px;
+              width: 90px;
+              height: 33px;
+              z-index: 10;
 
-            &:hover::after {
-              border: solid 2px #3080de;
-            }
-          }
+              .widget-operation-btns {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                transform: translateX(200px);
+                transition: transform 0.3s ease-out;
+                border-bottom-left-radius: 10px;
+                background: #fff;
+                opacity: 0.7;
 
-          .widget-operation {
-            // display: none;
-            opacity: 0;
-            position: absolute;
-            top: 2px;
-            right: 2px;
-            width: 90px;
-            height: 33px;
-            z-index: 10;
+                i {
+                  font-size: 20px;
+                  cursor: pointer;
 
-            .widget-operation-btns {
-              display: flex;
-              justify-content: space-around;
-              align-items: center;
-              width: 100%;
-              height: 100%;
-              transform: translateX(200px);
-              transition: transform 0.3s ease-out;
-              border-bottom-left-radius: 10px;
-              background: #fff;
-              opacity: 0.7;
-
-              i {
-                font-size: 20px;
-                cursor: pointer;
-
-                &:hover {
-                  color: $theme-color;
+                  &:hover {
+                    color: $theme-color;
+                  }
                 }
               }
             }

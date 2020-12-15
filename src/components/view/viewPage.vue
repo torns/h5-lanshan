@@ -1,9 +1,14 @@
 <template>
-  <div class="view">
-    <!-- {{ viewData }} -->
+  <div class="viewPage">
+    <ls-top-bar-control
+      v-if="viewProject.controls"
+      :params="viewProject.controls.topBar.params"
+      :text="page.name"
+      :back="true"
+    ></ls-top-bar-control>
     <grid-layout
       class="view-page-list"
-      :layout.sync="viewData.list"
+      :layout.sync="cPage.list"
       :style=""
       :col-num="375"
       :row-height="1"
@@ -14,7 +19,7 @@
     >
       <grid-item
         class="view-page-item"
-        v-for="item in viewData.list"
+        v-for="item in cPage.list"
         :x="item.x"
         :y="item.y"
         :w="item.w"
@@ -26,7 +31,7 @@
           :is="item.name"
           :item="item"
           :view="true"
-          :contraction="contraction"
+          :contraction="1"
         ></component>
       </grid-item>
     </grid-layout>
@@ -34,56 +39,39 @@
 </template>
 
 <script>
-import { pageGetById } from "@/api/page";
 import VueGridLayout from "vue-grid-layout";
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters, mapActions } from "vuex";
+import { parsingPage, adapter } from "@/utils/view.js";
 
 export default {
+  name: "viewPage",
   components: {
     GridLayout: VueGridLayout.GridLayout,
     GridItem: VueGridLayout.GridItem,
   },
-  data() {
-    return {
-      viewData: {
-        list: [],
-      },
-      contraction: 1,
-    };
+  props: {
+    page: {
+      type: Object,
+    },
+  },
+  computed: {
+    ...mapGetters(["viewProject"]),
   },
   created() {
-    this.init();
+    this.cPage = this._.cloneDeep(this.page);
+    adapter(this.cPage.list);
   },
-  methods: {
-    async init() {
-      let list = [];
-      let id = this.$route.query.id;
-
-      let res = await pageGetById({ id });
-
-      if (res.status == "10000") {
-        this.viewData = res.list;
-        this.adapter();
-      }
-    },
-    // 适配
-    adapter(list) {
-      if (document.body.clientWidth <= 540) {
-        this.contraction = document.body.clientWidth / 375;
-
-        this.viewData.list.map((item) => {
-          item.h = item.h * this.contraction;
-          item.y = item.y * this.contraction;
-          return item;
-        });
-      }
-    },
+  data() {
+    return {
+      cPage: {},
+    };
   },
 };
 </script>
 
+
 <style lang="scss" scoped>
-.view {
+.viewPage {
   // background: #ccc;
 
   .view-page-list {
@@ -95,4 +83,4 @@ export default {
     }
   }
 }
-</style>
+</style>>

@@ -11,14 +11,13 @@
           class="waterfall-item"
           :class="[params.info.length > 0 ? 'waterfall-item-active' : '']"
           @click="clickItem(item)"
+          element-loading-spinner="el-icon-loading"
         >
           <img
             alt
             class="item-img"
-            onerror="this.src = 'https://st-gdx.dancf.com/gaodingx/0/uxms/design/20200408-165620-bd6c.png'"
+            onerror="this.src = 'http://pic.soutu123.cn/element_origin_min_pic/16/12/20/b956c5dbba7221df44f281882d5ac80b.jpg'"
             :src="item.url"
-            v-loading="item.loading"
-            element-loading-spinner="el-icon-loading"
           />
           <div v-if="params.info.length > 0" class="item-info">
             <div
@@ -106,6 +105,7 @@ export default {
 
   .item-img {
     width: 100%;
+    min-height: 50px;
   }
 }
 </style>

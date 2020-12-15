@@ -9,7 +9,7 @@
         <widget-model-list></widget-model-list>
       </sidebar-item-container>
       <sidebar-item-container icon="icon-pt" label="控件" name="controls">
-        控件
+        <controls-list></controls-list>
       </sidebar-item-container>
       <sidebar-item-container icon="icon-yemian1" label="页面" name="page">
         <page-list></page-list>

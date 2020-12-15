@@ -183,9 +183,9 @@ let widgets = [
         y: 0,
         w: 375,
         h: 50,
-        icon: 'icon-lunbo2',
+        icon: 'icon-guangbo1',
         params: {
-            icon:'volume-o',
+            icon: 'volume-o',
             color: '#000',
             backgroundStyle: backgroundStyle,
             list: [
@@ -194,34 +194,33 @@ let widgets = [
             ]
         }
     },
-    // 标签页          
-    {
-        name: 'ls-tabs',
-        label: '标签页',
-        x: 0,
-        y: 0,
-        w: 375,
-        h: 70,
-        img: require('@/assets/widgets/ls-text.png'),
-        params: {
-
-        }
-    },
-
-    // 页眉
+    // 顶部菜单
     {
         name: 'ls-top-bar',
-        label: '页眉',
+        label: '顶部菜单',
         x: 0,
         y: 0,
         w: 375,
         h: 48,
-        img: require('@/assets/widgets/ls-img.png'),
+        icon: 'icon-dingbulanshitu',
         params: {
             text: '活动页',
             back: true,
             fontStyle: fontStyle,
             backgroundStyle: backgroundStyle,
+        }
+    },
+    //空白占位
+    {
+        name: '',
+        label: '空白占位',
+        x: 0,
+        y: 0,
+        w: 375,
+        h: 50,
+        icon: 'icon-quanping',
+        params: {
+
         }
     },
 ]

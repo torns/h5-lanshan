@@ -84,17 +84,14 @@ export default {
 
               let cuur = list[i];
               this.list[index].push(cuur);
-              cuur.loading = true;
 
               // 等待图片加载完成 继续 next
               let Img = new Image();
               Img.src = list[i].url;
               Img.onload = () => {
-                cuur.loading = false;
                 resolve();
               };
               Img.onerror = () => {
-                cuur.loading = false;
                 resolve();
               };
             });

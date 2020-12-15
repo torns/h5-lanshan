@@ -39,7 +39,7 @@ export default {
   },
   computed: {
     qr() {
-      let url = `${process.env.VUE_APP_WEB_URL}view?id=${this.item.id}`;
+      let url = `${process.env.VUE_APP_WEB_URL}viewMain?id=${this.item.id}`;
 
       let options = {
         padding: 10, // 二维码四边空白（默认为10px）

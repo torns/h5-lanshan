@@ -10,6 +10,8 @@ export default {
     widgetRef: state => state.common.widgetRef,
     showConfig: state => state.common.showConfig,
     poolData: state => state.pool.poolData,
+    viewProject: state => state.view.viewProject,
+    viewPage: state => state.view.viewPage,
     widgetPage: state => {
         setLocalStorage('page', state.common.widgetPage)
         return state.common.widgetPage
@@ -20,5 +22,4 @@ export default {
         // console.log(state.common.widgetPage);
         return pageBackgroundChannel(state.common.widgetPage.config)
     },
-
 }

@@ -6,9 +6,6 @@
       label-width="90px"
       label-position="left"
     >
-      <el-form-item props="text" label="标题：">
-        <el-input v-model="config.text" size="small"></el-input>
-      </el-form-item>
       <!-- 字体样式 -->
       <font-form v-model="config.fontStyle" title='标题配置'></font-form>
       <!-- 背景样式 -->
@@ -19,7 +16,7 @@
 
 <script>
 export default {
-  name: "ls-top-bar-config",
+  name: "top-bar-control-config",
   props: {
     params: {
       type: Object,
