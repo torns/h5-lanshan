@@ -16,7 +16,7 @@
           <img
             alt
             class="item-img"
-            onerror="this.src = 'http://pic.soutu123.cn/element_origin_min_pic/16/12/20/b956c5dbba7221df44f281882d5ac80b.jpg'"
+            onerror="this.src = 'http://116.62.142.85:8090/baseImg/img-err.jpg'"
             :src="item.url"
           />
           <div v-if="params.info.length > 0" class="item-info">

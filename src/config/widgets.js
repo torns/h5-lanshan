@@ -75,27 +75,27 @@ let widgets = [
             list: [
                 {
                     name: '国潮',
-                    url: "http://116.62.142.85:8090/flow-1.jpg",
+                    url: "http://116.62.142.85:8090/baseImg/flow-1.jpg",
                 },
                 {
                     name: '天涯海角',
-                    url: "http://116.62.142.85:8090/flow-2.jpg",
+                    url: "http://116.62.142.85:8090/baseImg/flow-2.jpg",
                 },
                 {
                     name: '11.11',
-                    url: "http://116.62.142.85:8090/flow-3.jpg",
+                    url: "http://116.62.142.85:8090/baseImg/flow-3.jpg",
                 },
                 {
                     name: '重阳',
-                    url: "http://116.62.142.85:8090/flow-4.jpg",
+                    url: "http://116.62.142.85:8090/baseImg/flow-4.jpg",
                 },
                 {
                     name: '端午',
-                    url: "http://116.62.142.85:8090/flow-5.jpg",
+                    url: "http://116.62.142.85:8090/baseImg/flow-5.jpg",
                 },
                 {
                     name: '中秋',
-                    url: "http://116.62.142.85:8090/flow-6.jpg",
+                    url: "http://116.62.142.85:8090/baseImg/flow-6.jpg",
                 },
             ],
 

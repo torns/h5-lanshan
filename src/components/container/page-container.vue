@@ -1,6 +1,11 @@
 <template>
   <div class="page-container">
-    <img :src="item.cover" alt="" ref="img" />
+    <img
+      :src="item.cover"
+      alt=""
+      ref="img"
+      onerror="this.src = 'http://116.62.142.85:8090/baseImg/page-default.jpg'"
+    />
     <div class="obscuration"></div>
     <div class="operation flex row-between">
       <!-- 修改页面 -->

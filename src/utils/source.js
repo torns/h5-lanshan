@@ -29,7 +29,7 @@ export async function getSourceData(option) {
         // console.log(data.params);
     }
 
-    let result = await Post("http://localhost:3000/source/cross", data)
+    let result = await Post(`${process.env.VUE_APP_WEB_URL}/source/cross`, data)
     return result
 }
 

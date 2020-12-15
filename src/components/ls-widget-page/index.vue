@@ -154,15 +154,13 @@ export default {
     .canvas-page {
       position: relative;
       width: 375px;
-      height: 667px;
+      min-height: 667px;
       margin: 50px auto;
       box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
       background-color: #fff;
 
       .page-wrapper {
         width: 100%;
-        height: calc(100% - 48px);
-        overflow: auto;
 
         .canvas-page-list {
           width: 100%;
