@@ -77,8 +77,12 @@
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
+import dataPool from "@/components/data-pool";
 export default {
   name: "attr-config",
+  components: {
+    dataPool,
+  },
   data() {
     return {
       page: 0,
@@ -92,13 +96,13 @@ export default {
     configName() {
       return this.chooseWidget?.name + "-config";
     },
-    widgetParams(){
-      console.log('widgetParams...');
-      
+    widgetParams() {
+      console.log("widgetParams...");
+
       console.log(this.chooseWidget.params);
-      
-      return this.chooseWidget.params?this.chooseWidget.params:{}
-    }
+
+      return this.chooseWidget.params ? this.chooseWidget.params : {};
+    },
   },
   watch: {
     chooseWidget: {

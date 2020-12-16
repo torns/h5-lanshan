@@ -1,3 +1,6 @@
+/** 
+* 背景表单
+*/
 <template>
   <form-container title="背景配置">
     <el-form ref="form" :model="form" label-width="90px" label-position="left">
@@ -16,8 +19,17 @@
 </template>
 
 <script>
+import materialUpload from "@/components/material/material-upload";
+import formContainer from "@/components/container/form-container";
+import gradient from "@/components/gradient";
+
 export default {
   name: "background-form",
+  components: {
+    materialUpload,
+    formContainer,
+    gradient,
+  },
   props: {
     form: {
       type: Object,

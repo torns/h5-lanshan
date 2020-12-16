@@ -18,8 +18,13 @@
 </template>
 
 <script>
+import uploadImageContainer from "@/components/container/upload-image-container";
+
 export default {
   name: "material-upload",
+  components: {
+    uploadImageContainer,
+  },
   props: {
     value: {
       type: String,

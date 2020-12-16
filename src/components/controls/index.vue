@@ -9,8 +9,12 @@
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
+import lsTopBarControl from "@/components/controls/ls-top-bar-control";
 
 export default {
+  components: {
+    lsTopBarControl,
+  },
   props: {
     view: {
       type: Boolean,

@@ -42,12 +42,14 @@
 import VueGridLayout from "vue-grid-layout";
 import { mapGetters, mapActions } from "vuex";
 import { parsingPage, adapter } from "@/utils/view.js";
+import lsTopBarControl from "@/components/controls/ls-top-bar-control";
 
 export default {
   name: "viewPage",
   components: {
     GridLayout: VueGridLayout.GridLayout,
     GridItem: VueGridLayout.GridItem,
+    lsTopBarControl,
   },
   props: {
     page: {

@@ -25,10 +25,14 @@ import config from "@/mixin/config";
 import { mapMutations } from "vuex";
 import { remoteGetById } from "@/api/remote";
 import { getResultData } from "@/utils/source";
+import materialSwiper from "@/components/material/material-swiper";
 
 export default {
   name: "ls-swiper",
   mixins: [config],
+  components: {
+    materialSwiper,
+  },
   data() {
     return {
       show: true,

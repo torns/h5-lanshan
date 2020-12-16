@@ -2,7 +2,11 @@
   <div class="config-body">
     <el-form ref="form" :model="form" label-width="100px" label-position="left">
       <el-form-item label="背景图类型：">
-        <el-select v-model="form.backgroundType" size='small' placeholder="请选择背景类型">
+        <el-select
+          v-model="form.backgroundType"
+          size="small"
+          placeholder="请选择背景类型"
+        >
           <el-option label="重复" :value="0"> </el-option>
           <el-option label="单张" :value="1"> </el-option>
           <el-option label="纯色" :value="2"> </el-option>
@@ -25,10 +29,16 @@
 </template>
 
 <script>
+import gradient from "@/components/gradient";
 import { mapGetters, mapMutations } from "vuex";
+import materialUpload from "@/components/material/material-upload";
 
 export default {
   name: "page-config",
+  components: {
+    gradient,
+    materialUpload,
+  },
   data() {
     return {
       test: {

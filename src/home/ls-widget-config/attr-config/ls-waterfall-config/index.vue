@@ -115,9 +115,19 @@
 import { getRandomCode } from "@/utils/tools";
 import { remoteGetById } from "@/api/remote";
 import { getResultData } from "@/utils/source";
+import jump from "@/components/jump";
+import operationList from "@/components/operation-list";
+import sourceList from "@/components/source/source-list";
+import materialUpload from "@/components/material/material-upload";
 
 export default {
   name: "ls-waterfall-config",
+  components: {
+    jump,
+    sourceList,
+    operationList,
+    materialUpload,
+  },
   props: {
     params: {
       type: Object,

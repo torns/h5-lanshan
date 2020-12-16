@@ -8,7 +8,11 @@
     >
       <el-form-item props="color" label="通知样式：">
         <div class="flex">
-          <div class="w50 h30 f24 pointer" v-for="(icon, i) in icons" @click="config.icon = icon">
+          <div
+            class="w50 h30 f24 pointer"
+            v-for="(icon, i) in icons"
+            @click="config.icon = icon"
+          >
             <van-icon :name="icon" />
           </div>
         </div>
@@ -58,8 +62,15 @@
 </template>
 
 <script>
+import operationList from "@/components/operation-list";
+import backgroundForm from "@/components/form/background-form";
+
 export default {
   name: "ls-notice-bar-config",
+  components: {
+    operationList,
+    backgroundForm
+  },
   props: {
     params: {
       type: Object,

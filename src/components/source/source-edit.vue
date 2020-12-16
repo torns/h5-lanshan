@@ -135,9 +135,17 @@
 
 <script>
 import { remoteAdd, remoteEdit } from "@/api/remote";
+import paramsList from "@/components/source/params-list";
+import codeView from "@/components/source/code-view";
+import codeFilter from "@/components/source/code-filter";
 
 export default {
   name: "source-edit",
+  components: {
+    codeView,
+    paramsList,
+    codeFilter,
+  },
   props: {
     show: {
       type: Boolean,
@@ -147,7 +155,6 @@ export default {
       type: Object,
     },
   },
-
   data() {
     return {
       filterVisible: false,

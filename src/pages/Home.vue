@@ -12,9 +12,14 @@
 <script>
 import { mapMutations, mapActions } from "vuex";
 import { getLocalStorage } from "@/utils/storage";
+import lsHeader from "@/home/ls-header";
+import lsWidgetList from "@/home/ls-widget-list";
+import lsWidgetPage from "@/home/ls-widget-page";
+import lsWidgetConfig from "@/home/ls-widget-config";
 
 export default {
   name: "Home",
+  components: { lsHeader, lsWidgetList, lsWidgetPage, lsWidgetConfig },
   created() {
     // this.resetPage(getLocalStorage("page"));
     this.resetProject();

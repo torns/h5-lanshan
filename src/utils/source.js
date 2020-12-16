@@ -28,8 +28,7 @@ export async function getSourceData(option) {
         // console.log('参数');
         // console.log(data.params);
     }
-
-    let result = await Post(`${process.env.VUE_APP_WEB_URL}/source/cross`, data)
+    let result = await Post(`/source/cross`, data)
     return result
 }
 

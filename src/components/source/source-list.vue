@@ -49,10 +49,14 @@
 </template>
 
 <script>
+import sourceEdit from "@/components/source/source-edit";
 import { remoteGetList, remoteGetById } from "@/api/remote";
 
 export default {
   name: "source-list",
+  components: {
+    sourceEdit,
+  },
   data() {
     return {
       list: [],

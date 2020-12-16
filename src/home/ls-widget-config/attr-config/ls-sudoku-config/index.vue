@@ -97,8 +97,19 @@
 </template>
 
 <script>
+import fontForm from "@/components/form/font-form";
+import operationList from "@/components/operation-list";
+import materialUpload from "@/components/material/material-upload";
+import backgroundForm from "@/components/form/background-form";
+
 export default {
   name: "ls-sudoku-config",
+  components: {
+    fontForm,
+    operationList,
+    materialUpload,
+    backgroundForm
+  },
   props: {
     params: {
       type: Object,

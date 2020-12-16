@@ -19,8 +19,21 @@
 </template>
 
 <script>
+import widgetModelList from "@/home/ls-widget-list/widget-model-list";
+import controlsList from "@/home/ls-widget-list/controls-list";
+import pageList from "@/home/ls-widget-list/page-list";
+import sidebarContainer from '@/components/container/sidebar-container'
+import sidebarItemContainer from '@/components/container/sidebar-container/sidebar-item-container'
+
 export default {
   name: "ls-widget-list",
+  components: {
+    widgetModelList,
+    controlsList,
+    pageList,
+    sidebarContainer,
+    sidebarItemContainer
+  },
   data() {
     return {
       active: "material",

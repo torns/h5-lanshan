@@ -27,8 +27,15 @@
 </template>
 
 <script>
+import fontForm from "@/components/form/font-form";
+import backgroundForm from "@/components/form/background-form";
+
 export default {
   name: "ls-button-config",
+  components: {
+    fontForm,
+    backgroundForm
+  },
   props: {
     params: {
       type: Object,

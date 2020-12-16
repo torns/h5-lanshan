@@ -41,10 +41,14 @@ import config from "@/mixin/config";
 import { mapMutations } from "vuex";
 import { remoteGetById } from "@/api/remote";
 import { getResultData } from "@/utils/source";
+import materialWaterfall from "@/components/material/material-waterfall";
 
 export default {
   name: "ls-waterfall",
   mixins: [config],
+  components: {
+    materialWaterfall,
+  },
   data() {
     return {
       show: true,

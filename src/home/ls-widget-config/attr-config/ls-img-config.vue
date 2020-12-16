@@ -23,8 +23,13 @@
 </template>
 
 <script>
+import materialUpload from "@/components/material/material-upload";
+
 export default {
   name: "ls-img-config",
+  components: {
+    materialUpload,
+  },
   props: {
     params: {
       type: Object,

@@ -55,9 +55,13 @@ import { mapGetters, mapActions } from "vuex";
 import { pageAdd, pageEdit, pageGetList } from "@/api/page";
 import { base64ToImg } from "@/api/tool";
 import { poolChange } from "@/api/pool";
+import uploadImageContainer from "@/components/container/upload-image-container";
 
 export default {
   name: "page-save",
+  components: {
+    uploadImageContainer,
+  },
   data() {
     return {
       show: false,

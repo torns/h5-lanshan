@@ -14,9 +14,13 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import pageRoom from "@/home/ls-header/page-room";
+import pageSave from "@/home/ls-header/page-save";
+import pageView from "@/home/ls-header/page-view";
 
 export default {
   name: "ls-header",
+  components: { pageRoom, pageSave, pageView },
   data() {
     return {};
   },
@@ -24,8 +28,8 @@ export default {
     ...mapGetters(["widgetPage"]),
   },
   methods: {
-    ...mapActions(['resetProject'])
-  }
+    ...mapActions(["resetProject"]),
+  },
 };
 </script>
 

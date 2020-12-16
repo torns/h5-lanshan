@@ -53,6 +53,7 @@
 <script>
 import { codemirror } from "vue-codemirror-lite";
 import { filterData, filterTrading } from "@/utils/source";
+import codeView from "@/components/source/code-view";
 
 // 主题样式
 import "codemirror/theme/ayu-dark.css";
@@ -68,7 +69,7 @@ require("codemirror/addon/hint/javascript-hint.js");
 
 export default {
   name: "code-filter",
-  components: { codemirror },
+  components: { codemirror, codeView },
   props: {
     show: {
       type: Boolean,

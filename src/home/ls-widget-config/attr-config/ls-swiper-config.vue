@@ -130,6 +130,11 @@
 
 <script>
 import { getRandomCode } from "@/utils/tools";
+import operationList from "@/components/operation-list";
+import materialUpload from "@/components/material/material-upload";
+import sourceList from "@/components/source/source-list";
+import jump from "@/components/jump";
+
 let themeObj = {
   // 基础主题
   base: {
@@ -170,6 +175,12 @@ let themeObj = {
 };
 export default {
   name: "ls-swiper-config",
+  components: {
+    materialUpload,
+    operationList,
+    sourceList,
+    jump
+  },
   props: {
     params: {
       type: Object,

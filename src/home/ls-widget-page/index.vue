@@ -68,12 +68,14 @@
 <script>
 import VueGridLayout from "vue-grid-layout";
 import { mapGetters, mapMutations } from "vuex";
+import controls from "@/components/controls";
 
 export default {
   name: "ls-widget-page",
   components: {
     GridLayout: VueGridLayout.GridLayout,
     GridItem: VueGridLayout.GridItem,
+    controls,
   },
   mounted() {
     this.setWidgetRef(this.$refs);

@@ -1,3 +1,6 @@
+/** 
+* 字体表单
+*/
 <template>
   <form-container :title="title || '文字配置'">
     <el-form ref="form" :model="form" label-width="90px" label-position="left">
@@ -24,9 +27,17 @@
 
 <script>
 import { fontStyle } from "@/config/initData";
+import fontForm from "@/components/form/font-form";
+import formContainer from "@/components/container/form-container";
+import gradient from "@/components/gradient";
 
 export default {
   name: "font-form",
+  components: {
+    fontForm,
+    gradient,
+    formContainer,
+  },
   props: {
     form: {
       type: Object,
