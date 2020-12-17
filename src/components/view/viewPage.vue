@@ -75,6 +75,7 @@ export default {
 <style lang="scss" scoped>
 .viewPage {
   // background: #ccc;
+  width: 100%;
 
   .view-page-list {
     width: 100%;

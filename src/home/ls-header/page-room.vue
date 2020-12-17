@@ -37,9 +37,13 @@
 <script>
 import { pageAdd, pageEdit, pageGetList } from "@/api/page";
 import { mapGetters, mapActions } from "vuex";
+import pageContainer from "@/components/container/page-container";
 
 export default {
   name: "page-room",
+  components: {
+    pageContainer,
+  },
   data() {
     return {
       show: false,

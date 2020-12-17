@@ -29,6 +29,22 @@ export let backgroundStyle = {
     }
 }
 
+// 字体初始样式 (顶部栏)
+export let TopBarFontStyle = {
+    fontSize: 17,
+    letterSpacing: 0,
+    fontWeight: 600,
+    backgroundColor: {
+        angle: 180,
+        list: [
+            {
+                color: "#000",
+                proportion: 30,
+            },
+        ],
+    }
+}
+
 // 初始字体渐变色（按钮）
 export let btnFontStyle = {
     fontSize: 12,

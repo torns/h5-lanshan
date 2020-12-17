@@ -98,7 +98,7 @@ export default {
           };
           await next();
           if (i == list.length - 1) {
-            this.$emit("appended");
+            this.$emit("end");
             console.log(this.list);
           }
         }

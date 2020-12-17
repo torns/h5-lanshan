@@ -1,4 +1,4 @@
-import { fontStyle, backgroundStyle } from './initData'
+import { TopBarFontStyle, backgroundStyle } from './initData'
 
 export default {
     topBar: {
@@ -6,7 +6,7 @@ export default {
         label: '顶部',
         show: true,
         params: {
-            fontStyle: fontStyle,
+            fontStyle: TopBarFontStyle,
             backgroundStyle: backgroundStyle,
         }
     }

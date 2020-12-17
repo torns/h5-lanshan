@@ -6,8 +6,12 @@
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
+import viewPage from "@/components/view/viewPage";
 
 export default {
+  components: {
+    viewPage,
+  },
   data() {
     return {};
   },

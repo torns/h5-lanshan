@@ -5,6 +5,7 @@
       :value="params.dataType == 1 ? params.source.data : params.list"
       :column="params.column"
       :gutter="params.gutter"
+      @end="end"
     >
       <template v-slot="{ item }">
         <div
@@ -62,7 +63,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(["resetWidgetView", "setPoolData"]),
+    ...mapMutations(["resetWidgetView", "setPoolData", "resetView"]),
     async initSourceData(id) {
       this.loading = true;
       let res = await remoteGetById({ id });
@@ -79,6 +80,13 @@ export default {
         });
       }
       this.jump(this.params.jump);
+    },
+    end() {
+      // 预览模式自适应瀑布流高度（瀑布流可以调用异步数据，高度不定）
+      if (this.view) {
+        let height = this.$refs["widgetRef"].offsetHeight;
+        this.item.h = height
+      }
     },
   },
 };
