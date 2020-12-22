@@ -2,7 +2,7 @@
  * 组件初始配置数据
  */
 import store from '@/store'
-import { btnFontStyle, btnBackgroundStyle, sudokuList, fontStyle, backgroundStyle, jumpData } from './initData'
+import { btnFontStyle, btnBackgroundStyle, sudokuList, fontStyle, backgroundStyle, jumpData, TopBarFontStyle } from './initData'
 
 let widgets = [
     // 图片
@@ -13,7 +13,6 @@ let widgets = [
         y: 0,
         w: 375,
         h: 666,
-        img: require('@/assets/widgets/ls-img.png'),
         icon: 'icon-hebingxingzhuang',
         params: {
             url: 'https://st-gdx.dancf.com/gaodingx/0/uxms/design/20200910-175637-128e.png',
@@ -28,12 +27,25 @@ let widgets = [
         y: 0,
         w: 375,
         h: 70,
-        img: require('@/assets/widgets/ls-text.png'),
         icon: 'icon-wenzi',
         params: {
             text: "此生来生都愿识尽世间好人，读尽世间好书，看尽世间好山水，天上风景再好，从不羡慕。",
             color: "#3c3c3c",
             fontSize: 14,
+        }
+    },
+    // 标题
+    {
+        name: 'ls-title',
+        label: '标题',
+        x: 0,
+        y: 0,
+        w: 375,
+        h: 50,
+        icon: 'icon-biaoti',
+        params: {
+            text: "标题",
+            fontStyle: TopBarFontStyle,
         }
     },
     // 按钮
@@ -44,7 +56,6 @@ let widgets = [
         y: 0,
         w: 375,
         h: 50,
-        img: require('@/assets/widgets/ls-text.png'),
         icon: 'icon-anniu',
         params: {
             width: 100,
@@ -63,7 +74,6 @@ let widgets = [
         y: 0,
         w: 375,
         h: 772,
-        img: require('@/assets/widgets/ls-swiper.png'),
         icon: 'icon-pubuliu',
         params: {
             column: 2,
@@ -116,7 +126,6 @@ let widgets = [
         y: 0,
         w: 375,
         h: 79,
-        img: require('@/assets/widgets/ls-img.png'),
         icon: 'icon-icon-mofangdaohang',
         params: {
             width: 100,
@@ -137,8 +146,7 @@ let widgets = [
         x: 0,
         y: 0,
         w: 375,
-        h: 180,
-        img: require('@/assets/widgets/ls-swiper.png'),
+        h: 200,
         icon: 'icon-lunbo2',
         params: {
             autoplay: true,
@@ -150,21 +158,26 @@ let widgets = [
             imgWidth: 100,
             imgHeight: 180,
             spaceBetween: 0,
+            paginationTop: 150,
+            fontStyle: fontStyle,
             list: [
                 {
                     name: "轮播1",
                     url: "https://st-gdx.dancf.com/gaodingx/0/uxms/design/20200408-165620-bd6c.png",
                     jump: jumpData,
+                    text: ''
                 },
                 {
                     name: "轮播2",
                     url: "https://st-gdx.dancf.com/gaodingx/0/uxms/design/20200220-111024-dded.png",
                     jump: jumpData,
+                    text: ''
                 },
                 {
                     name: "轮播3",
                     url: "https://st-gdx.dancf.com/gaodingx/0/uxms/design/20200602-134906-2aed.png",
                     jump: jumpData,
+                    text: ''
                 },
             ],
             // 接口配置数据
@@ -192,22 +205,6 @@ let widgets = [
                 { text: '我开始播放通知啦！' },
                 { text: '把你想通知的内容写进来吧！' },
             ]
-        }
-    },
-    // 顶部菜单
-    {
-        name: 'ls-top-bar',
-        label: '顶部菜单',
-        x: 0,
-        y: 0,
-        w: 375,
-        h: 48,
-        icon: 'icon-dingbulanshitu',
-        params: {
-            text: '活动页',
-            back: true,
-            fontStyle: fontStyle,
-            backgroundStyle: backgroundStyle,
         }
     },
     //空白占位

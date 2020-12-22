@@ -21,6 +21,12 @@ import Vant from 'vant';
 import 'vant/lib/index.css';
 Vue.use(Vant);
 
+// loading 插件
+import Loading from '@/plugin/index.js'
+Vue.use(Loading)
+
+
+// 过滤器
 import * as filters from '@/utils/filters.js'
 
 Object.keys(filters).forEach(key => {
@@ -31,7 +37,6 @@ Vue.config.productionTip = false
 Vue.prototype._ = _
 Vue.prototype.$get = Get
 Vue.prototype.$post = Post
-
 
 new Vue({
   router,

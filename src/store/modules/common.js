@@ -170,8 +170,8 @@ function addPage(state, init) {
     state.showConfig = false
     resetWidget(state)
     widgetPushPage(page.list, state.widgetList[0])
-    widgetPushPage(page.list, state.widgetList[5])
-    widgetPushPage(page.list, state.widgetList[3])
+    widgetPushPage(page.list, state.widgetList[6])
+    widgetPushPage(page.list, state.widgetList[4])
 
     state.project.pages.push(page)
     state.widgetPage = page

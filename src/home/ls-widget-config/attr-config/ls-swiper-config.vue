@@ -85,7 +85,6 @@
     <!-- 编译 -->
     <el-dialog width="25%" :visible.sync="show" :append-to-body="true">
       <div slot="title" class="dialog-title">编辑数据源</div>
-      <!-- {{ cloneData }} -->
       <el-form
         :model="cloneData"
         ref="ruleForm"
@@ -107,9 +106,6 @@
             class="iconfont icon-tiaozhuan f20 pointer"
             @click="$refs['jump'].open()"
           ></i>
-          <!-- <div class="jump-btn" @click="$refs['jump'].open()">
-            <i class="iconfont icon-tiaozhuan"></i>
-          </div> -->
         </el-form-item>
         <el-form-item label="数据池赋值数据" prop="pool_value">
           <el-input

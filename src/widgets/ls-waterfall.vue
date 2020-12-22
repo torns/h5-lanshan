@@ -1,5 +1,5 @@
 <template>
-  <div class="ls-waterfall" ref="widgetRef" v-loading="loading">
+  <div class="ls-waterfall" ref="widgetRef" v-ls-loading="loading">
     <material-waterfall
       v-if="show"
       :value="params.dataType == 1 ? params.source.data : params.list"
@@ -28,7 +28,13 @@
               :key="item.id"
               :style="{ fontSize: d.fontSize + 'px', color: d.color }"
             >
-              {{ item[d.attr] }}
+              <i
+                v-if="d.icon"
+                class="iconfont mr1"
+                :class="d.icon"
+                :style="{ fontSize: d.fontSize + 'px' }"
+              ></i>
+              <span>{{ item[d.attr] }}</span>
             </div>
           </div>
         </div>
@@ -43,6 +49,7 @@ import { mapMutations } from "vuex";
 import { remoteGetById } from "@/api/remote";
 import { getResultData } from "@/utils/source";
 import materialWaterfall from "@/components/material/material-waterfall";
+import { iconList } from "@/config/initData";
 
 export default {
   name: "ls-waterfall",
@@ -54,6 +61,7 @@ export default {
     return {
       show: true,
       loading: false,
+      iconList: iconList,
     };
   },
   created() {
@@ -85,7 +93,7 @@ export default {
       // 预览模式自适应瀑布流高度（瀑布流可以调用异步数据，高度不定）
       if (this.view) {
         let height = this.$refs["widgetRef"].offsetHeight;
-        this.item.h = height
+        this.item.h = height;
       }
     },
   },

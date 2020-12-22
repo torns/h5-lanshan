@@ -7,6 +7,7 @@
         :style="{ ...styleSudokuItem, backgroundImage: `url(${d.background})` }"
         v-for="(d, index) in deal"
         :key="index"
+         @click="jump(d.jump)"
       >
         <img class="sudoku-item-img" :src="d.url" alt="" />
         <div class="font mt7" :style="styleFont">{{ d.title }}</div>

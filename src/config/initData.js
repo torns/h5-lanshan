@@ -76,28 +76,56 @@ export let btnBackgroundStyle = {
     }
 }
 
-// 九宫格初始数据
-export let sudokuList = [
-    {
-        title: '酒店',
-        url: 'https://s3.ax1x.com/2020/11/26/DBnkQA.png'
-    },
-    {
-        title: '门票',
-        url: 'https://s3.ax1x.com/2020/11/26/DBnELt.png'
-    },
-    {
-        title: '周边游',
-        url: 'https://s3.ax1x.com/2020/11/26/DBnYwV.png'
-    },
-    {
-        title: '自由行',
-        url: 'https://s3.ax1x.com/2020/11/26/DBn6w6.png'
-    },
-]
-
 // 跳转初始数据
 export let jumpData = {
     type: 0,
     pathData: ''
 }
+
+// 九宫格初始数据
+export let sudokuList = [
+    {
+        title: '酒店',
+        url: 'https://s3.ax1x.com/2020/11/26/DBnkQA.png',
+        jump: jumpData,
+    },
+    {
+        title: '门票',
+        url: 'https://s3.ax1x.com/2020/11/26/DBnELt.png',
+        jump: jumpData
+    },
+    {
+        title: '周边游',
+        url: 'https://s3.ax1x.com/2020/11/26/DBnYwV.png',
+        jump: jumpData
+    },
+    {
+        title: '自由行',
+        url: 'https://s3.ax1x.com/2020/11/26/DBn6w6.png',
+        jump: jumpData
+    },
+]
+
+// 全局图标数组
+export let iconList = [
+    // 播放量
+    {
+        name:'pause',
+        icon:'icon-pause'
+    },
+    // 价格
+    {
+        name:'price',
+        icon:'icon-Price'
+    },
+    // 热度
+    {
+        name:'hot',
+        icon:'icon-ee-pushline-hot-topic'
+    },
+    // 点赞
+    {
+        name:'zan',
+        icon:'icon-zan'
+    },
+]

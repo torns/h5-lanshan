@@ -52,7 +52,7 @@
           <el-color-picker v-model="form.color"></el-color-picker>
         </el-form-item>
         <el-form-item
-          label="文字大小："
+          label="文字大小"
           prop="fontSize"
           :rules="{
             required: true,
@@ -85,6 +85,18 @@
             :max="4"
           ></el-input-number>
         </el-form-item>
+        <el-form-item label="字段类型">
+          <div
+            class="shadow-border pointer mr30"
+            v-for="item in iconList"
+            @click="choose(item.icon)"
+          >
+            <i
+              class="iconfont f20"
+              :class="[item.icon, form.icon == item.icon ? 'theme' : '']"
+            ></i>
+          </div>
+        </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="show = false">取 消</el-button>
@@ -95,6 +107,8 @@
 </template>
 
 <script>
+import { iconList } from "@/config/initData";
+
 export default {
   name: "waterfall-config-attr",
   data() {
@@ -104,6 +118,7 @@ export default {
       type: "",
       config: {},
       i: undefined,
+      iconList: iconList,
     };
   },
   watch: {
@@ -163,6 +178,9 @@ export default {
       } else {
         return true;
       }
+    },
+    choose(icon) {
+      this.$set(this.form, "icon", icon);
     },
   },
 };

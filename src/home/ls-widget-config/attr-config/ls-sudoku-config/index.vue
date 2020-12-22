@@ -46,7 +46,12 @@
     </el-form>
 
     <!-- 编译 -->
-    <el-dialog width="25%" :visible.sync="show" :close-on-click-modal="false">
+    <el-dialog
+      width="25%"
+      :visible.sync="show"
+      :close-on-click-modal="false"
+      :append-to-body="true"
+    >
       <div slot="title" class="dialog-title">编辑数据源</div>
       <el-form
         :model="cloneData"
@@ -61,13 +66,13 @@
             style="width: 250px"
           ></el-input>
         </el-form-item>
-        <el-form-item label="跳转地址" prop="path">
-          <el-input
-            v-model="cloneData.path"
-            size="small"
-            style="width: 250px"
-          ></el-input>
+        <el-form-item label="跳转" prop="jump">
+          <i
+            class="iconfont icon-tiaozhuan f20 pointer"
+            @click="$refs['jump'].open()"
+          ></i>
         </el-form-item>
+        <jump ref="jump" v-model="cloneData.jump"></jump>
         <el-form-item label="图标" prop="url">
           <material-upload v-model="cloneData.url"></material-upload>
         </el-form-item>
@@ -97,6 +102,7 @@
 </template>
 
 <script>
+import jump from "@/components/jump";
 import fontForm from "@/components/form/font-form";
 import operationList from "@/components/operation-list";
 import materialUpload from "@/components/material/material-upload";
@@ -105,14 +111,19 @@ import backgroundForm from "@/components/form/background-form";
 export default {
   name: "ls-sudoku-config",
   components: {
+    jump,
     fontForm,
     operationList,
     materialUpload,
-    backgroundForm
+    backgroundForm,
   },
   props: {
     params: {
       type: Object,
+      default: () => ({
+        type: 0,
+        pathData: "",
+      }),
     },
   },
   data() {
