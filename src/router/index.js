@@ -18,15 +18,52 @@ const routes = [
     children: [
       {
         path: '/',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '../pages/view/home.vue')
       },
       {
         path: '/custom1',
         name: 'custom1',
         component: () => import(/* webpackChunkName: "about" */ '../pages/view/custom1.vue')
+      },
+      {
+        path: '/custom2',
+        name: 'custom2',
+        component: () => import(/* webpackChunkName: "about" */ '../pages/view/custom2.vue')
+      },
+      {
+        path: '/custom3',
+        name: 'custom3',
+        component: () => import(/* webpackChunkName: "about" */ '../pages/view/custom3.vue')
+      },
+      {
+        path: '/custom4',
+        name: 'custom4',
+        component: () => import(/* webpackChunkName: "about" */ '../pages/view/custom4.vue')
+      },
+      {
+        path: '/custom5',
+        name: 'custom5',
+        component: () => import(/* webpackChunkName: "about" */ '../pages/view/custom5.vue')
+      },
+      {
+        path: '/custom6',
+        name: 'custom6',
+        component: () => import(/* webpackChunkName: "about" */ '../pages/view/custom6.vue')
+      },
+      {
+        path: '/custom7',
+        name: 'custom7',
+        component: () => import(/* webpackChunkName: "about" */ '../pages/view/custom7.vue')
+      },
+      {
+        path: '/custom8',
+        name: 'custom8',
+        component: () => import(/* webpackChunkName: "about" */ '../pages/view/custom8.vue')
+      },
+      {
+        path: '/custom9',
+        name: 'custom9',
+        component: () => import(/* webpackChunkName: "about" */ '../pages/view/custom9.vue')
       },
     ]
   },

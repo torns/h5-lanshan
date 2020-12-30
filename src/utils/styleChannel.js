@@ -48,12 +48,11 @@ export function fontStyleChannel(config) {
     }
 
     return {
-        '-webkit-background-clip': 'text',
-        '-webkit-text-fill-color': 'transparent',
         fontSize: `${config.fontSize}px`,
         letterSpacing: `${config.letterSpacing}px`,
         fontWeight: config.fontWeight,
-        backgroundImage: `${gradientChannel(config.backgroundColor)}`,
+        color: config.color,
+        // backgroundImage: `${gradientChannel(config.backgroundColor)}`,
     }
 }
 

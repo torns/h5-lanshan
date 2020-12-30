@@ -1,27 +1,31 @@
 <template>
   <div class="test">
-    <img
-      alt
-      class="item-img"
-      src="http://116.62.142.85:8090/flow-4.jpg"
-      onerror="this.src = 'https://st-gdx.dancf.com/gaodingx/0/uxms/design/20200408-165620-bd6c.png'"
+    <aplayer
+      autoplay
+      :music="{
+        title: 'secret base~君がくれたもの~',
+        artist: 'Silent Siren',
+        src: 'http://m8.music.126.net/20201229102910/3e121146da30875345fd80ea8954e752/ymusic/0fd6/4f65/43ed/a8772889f38dfcb91c04da915b301617.mp3',
+        pic: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.jpg',
+      }"
     />
   </div>
 </template>
 
 <script>
+import Aplayer from "vue-aplayer";
 export default {
   name: "test",
+  components: {
+    Aplayer,
+  },
   data() {
-    return {
-      active: "material",
-    };
+    return {};
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .test {
-  height: 100vh;
 }
 </style>

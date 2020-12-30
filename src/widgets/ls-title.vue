@@ -22,6 +22,7 @@ export default {
     styleContent() {
       return {
         ...fontStyleChannel(this.params.fontStyle),
+        marginLeft:this.params.indentation + 'px'
       };
     },
   },

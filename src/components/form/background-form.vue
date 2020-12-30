@@ -12,21 +12,19 @@
         <gradient v-model="form.background"></gradient>
       </el-form-item>
       <el-form-item v-else proos="background" label="背景图片：">
-        <material-upload v-model="form.url"></material-upload>
+         <Imgpond :count="1" v-model="form.url" />
       </el-form-item>
     </el-form>
   </form-container>
 </template>
 
 <script>
-import materialUpload from "@/components/material/material-upload";
 import formContainer from "@/components/container/form-container";
 import gradient from "@/components/gradient";
 
 export default {
   name: "background-form",
   components: {
-    materialUpload,
     formContainer,
     gradient,
   },

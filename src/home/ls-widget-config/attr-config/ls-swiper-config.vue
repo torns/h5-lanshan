@@ -72,6 +72,12 @@
       </template>
       <!-- 接口数据配置 -->
       <template v-else>
+        <el-form-item label="跳转" prop="url">
+          <i
+            class="iconfont icon-tiaozhuan f20 pointer"
+            @click="$refs['sourceJump'].open()"
+          ></i>
+        </el-form-item>
         <div class="conf-btn" @click="sourceShow = true">配置接口数据</div>
         <source-list
           v-if="sourceShow"
@@ -99,7 +105,7 @@
           ></el-input>
         </el-form-item>
         <el-form-item label="图片地址" prop="url">
-          <material-upload v-model="cloneData.url"></material-upload>
+          <Imgpond :count="1" v-model="cloneData.url" />
         </el-form-item>
         <el-form-item label="跳转" prop="url">
           <i
@@ -114,20 +120,22 @@
             style="width: 250px"
           ></el-input>
         </el-form-item>
-        <jump ref="jump" v-model="cloneData.jump"></jump>
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="show = false">取 消</el-button>
         <el-button type="primary" @click="submit">确 定</el-button>
       </span>
     </el-dialog>
+    <!-- 静态数据跳转 -->
+    <jump ref="jump" v-model="cloneData.jump"></jump>
+    <!-- 远程数据跳转 -->
+    <jump ref="sourceJump" v-model="config.jump"></jump>
   </div>
 </template>
 
 <script>
 import { getRandomCode } from "@/utils/tools";
 import operationList from "@/components/operation-list";
-import materialUpload from "@/components/material/material-upload";
 import sourceList from "@/components/source/source-list";
 import jump from "@/components/jump";
 
@@ -172,10 +180,9 @@ let themeObj = {
 export default {
   name: "ls-swiper-config",
   components: {
-    materialUpload,
     operationList,
     sourceList,
-    jump
+    jump,
   },
   props: {
     params: {

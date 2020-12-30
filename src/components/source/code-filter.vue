@@ -52,7 +52,7 @@
 
 <script>
 import { codemirror } from "vue-codemirror-lite";
-import { filterData, filterTrading } from "@/utils/source";
+import { filterData } from "@/utils/source";
 import codeView from "@/components/source/code-view";
 
 // 主题样式
@@ -120,7 +120,7 @@ export default {
         let result = this.$refs["filter"].resCode;
         console.log(result);
 
-        if (result && result.length > 0) {
+        if (result) {
           this.$emit("save", value);
           this.visible = false;
         }

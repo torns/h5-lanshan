@@ -12,6 +12,7 @@
           class="img"
           :class="{ 'img-radius': imgRadius }"
           :src="item[imgKey]"
+          @click="clickItem(item)"
           alt
         />
       </swiper-slide>
@@ -143,15 +144,14 @@ export default {
           clickable: true,
           type: "bullets",
         },
-        on: {
-          // 点击回调
-          click: function () {
-            vm.$emit("clickItem", vm.list[this.realIndex]);
-          },
-        },
       },
     };
   },
+  methods: {
+    clickItem(data){
+      this.$emit('clickItem',data)
+    }
+  }
 };
 </script>
 

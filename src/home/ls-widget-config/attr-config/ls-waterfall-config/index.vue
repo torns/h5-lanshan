@@ -87,7 +87,7 @@
           ></el-input>
         </el-form-item>
         <el-form-item label="图片地址" prop="url">
-          <material-upload v-model="cloneData.url"></material-upload>
+           <Imgpond :count="1" v-model="cloneData.url" />
         </el-form-item>
 
         <el-form-item
@@ -118,7 +118,6 @@ import { getResultData } from "@/utils/source";
 import jump from "@/components/jump";
 import operationList from "@/components/operation-list";
 import sourceList from "@/components/source/source-list";
-import materialUpload from "@/components/material/material-upload";
 
 export default {
   name: "ls-waterfall-config",
@@ -126,7 +125,6 @@ export default {
     jump,
     sourceList,
     operationList,
-    materialUpload,
   },
   props: {
     params: {

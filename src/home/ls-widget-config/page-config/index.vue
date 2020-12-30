@@ -22,7 +22,7 @@
         v-if="[0, 1].includes(form.backgroundType)"
         label="背景图片："
       >
-        <material-upload v-model="form.backgroundImg"></material-upload>
+        <Imgpond :count="1" v-model="form.backgroundImg" />
       </el-form-item>
     </el-form>
   </div>
@@ -31,13 +31,11 @@
 <script>
 import gradient from "@/components/gradient";
 import { mapGetters, mapMutations } from "vuex";
-import materialUpload from "@/components/material/material-upload";
 
 export default {
   name: "page-config",
   components: {
     gradient,
-    materialUpload,
   },
   data() {
     return {

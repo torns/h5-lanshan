@@ -74,7 +74,12 @@ export default {
           value: data.pool_value,
         });
       }
-      this.jump(data.jump);
+      // 跳转
+      if (this.params.dataType == 0) {
+        this.jump(data.jump);
+      } else {
+        this.jump(this.params.jump);
+      }
     },
   },
 };

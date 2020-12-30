@@ -9,6 +9,9 @@
       <el-form-item props="text" label="文字：">
         <el-input v-model="config.text" size="small"></el-input>
       </el-form-item>
+      <el-form-item props="text" label="缩进：">
+        <el-slider v-model="config.indentation" :min="0" :max="300"></el-slider>
+      </el-form-item>
       <!-- 字体样式 -->
       <font-form v-model="config.fontStyle"></font-form>
     </el-form>

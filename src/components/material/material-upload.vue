@@ -64,6 +64,8 @@ export default {
   },
   methods: {
     handleAvatarSuccess(res, file) {
+      console.log(file.raw);
+      
       this.imageUrl = URL.createObjectURL(file.raw);
     },
     beforeAvatarUpload(file) {

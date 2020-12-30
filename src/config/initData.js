@@ -3,15 +3,16 @@ export let fontStyle = {
     fontSize: 12,
     letterSpacing: 0,
     fontWeight: 400,
-    backgroundColor: {
-        angle: 180,
-        list: [
-            {
-                color: "#000",
-                proportion: 30,
-            },
-        ],
-    }
+    color:'#000',
+    // backgroundColor: {
+    //     angle: 180,
+    //     list: [
+    //         {
+    //             color: "#000",
+    //             proportion: 30,
+    //         },
+    //     ],
+    // }
 }
 
 // 背景初始样式 (通用)
@@ -34,15 +35,16 @@ export let TopBarFontStyle = {
     fontSize: 17,
     letterSpacing: 0,
     fontWeight: 600,
-    backgroundColor: {
-        angle: 180,
-        list: [
-            {
-                color: "#000",
-                proportion: 30,
-            },
-        ],
-    }
+    color:'#000',
+    // backgroundColor: {
+    //     angle: 180,
+    //     list: [
+    //         {
+    //             color: "#000",
+    //             proportion: 30,
+    //         },
+    //     ],
+    // }
 }
 
 // 初始字体渐变色（按钮）
@@ -50,15 +52,16 @@ export let btnFontStyle = {
     fontSize: 12,
     letterSpacing: 0,
     fontWeight: 400,
-    backgroundColor: {
-        angle: 180,
-        list: [
-            {
-                color: "#fff",
-                proportion: 30,
-            },
-        ],
-    }
+    color:'#000',
+    // backgroundColor: {
+    //     angle: 180,
+    //     list: [
+    //         {
+    //             color: "#fff",
+    //             proportion: 30,
+    //         },
+    //     ],
+    // }
 }
 
 // 背景初始样式 （按钮）

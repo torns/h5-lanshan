@@ -74,10 +74,10 @@
         </el-form-item>
         <jump ref="jump" v-model="cloneData.jump"></jump>
         <el-form-item label="图标" prop="url">
-          <material-upload v-model="cloneData.url"></material-upload>
+           <Imgpond :count="1" v-model="cloneData.url" />
         </el-form-item>
         <el-form-item label="背景图" prop="background">
-          <material-upload v-model="cloneData.background"></material-upload>
+           <Imgpond :count="1" v-model="cloneData.background" />
         </el-form-item>
 
         <el-form-item
@@ -105,7 +105,6 @@
 import jump from "@/components/jump";
 import fontForm from "@/components/form/font-form";
 import operationList from "@/components/operation-list";
-import materialUpload from "@/components/material/material-upload";
 import backgroundForm from "@/components/form/background-form";
 
 export default {
@@ -114,7 +113,6 @@ export default {
     jump,
     fontForm,
     operationList,
-    materialUpload,
     backgroundForm,
   },
   props: {

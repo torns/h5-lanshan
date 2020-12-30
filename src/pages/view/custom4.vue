@@ -19,7 +19,7 @@ export default {
   computed: {
     ...mapGetters(["viewProject"]),
     page() {
-      return this.viewProject.pages[1];
+      return this.viewProject.pages[4];
     },
   },
   methods: {

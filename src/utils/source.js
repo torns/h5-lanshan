@@ -35,14 +35,14 @@ export async function getSourceData(option) {
 // 判断过滤器返回数据是否符合
 export function filterTrading(data) {
 
-    if (data && Array.isArray(data)) {
+    if (data && (Array.isArray(data) || typeof data == 'object')) {
         return true
     } else {
         console.warn('滤器处理返回数据:');
         console.warn(data);
         Vue.prototype.$notify({
             title: '过滤失败',
-            message: `经过滤器处理的数据必须是数组（当前返回结构请打开控制台查看）`,
+            message: `经过滤器处理的数据必须是数组或对象（当前返回结构请打开控制台查看）`,
             type: 'warning'
         });
         return false

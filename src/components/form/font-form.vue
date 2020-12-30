@@ -19,7 +19,8 @@
         <el-slider v-model="form.letterSpacing" :min="0" :max="10"></el-slider>
       </el-form-item>
       <el-form-item proos="backgroundColor" label="字体颜色：">
-        <gradient v-model="form.backgroundColor"></gradient>
+        <!-- <gradient v-model="form.backgroundColor"></gradient> -->
+        <el-color-picker v-model="form.color"></el-color-picker>
       </el-form-item>
     </el-form>
   </form-container>

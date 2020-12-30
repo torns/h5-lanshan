@@ -63,8 +63,8 @@ export default {
                             index = i
                     })
                     this.$router.push({ name: 'custom' + index })
-                    // 开发模式
                 } else {
+                    // 开发模式
                     this.selectedPage(data.pathData)
                 }
             }

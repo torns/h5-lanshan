@@ -16,20 +16,16 @@
         ></el-input-number>
       </el-form-item>
       <el-form-item proos="url" label="图片：">
-        <material-upload v-model="config.url"></material-upload>
+         <Imgpond :count="1" v-model="config.url" />
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
-import materialUpload from "@/components/material/material-upload";
 
 export default {
   name: "ls-img-config",
-  components: {
-    materialUpload,
-  },
   props: {
     params: {
       type: Object,
