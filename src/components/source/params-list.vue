@@ -10,8 +10,8 @@
         inactive-text="自定义"
       >
       </el-switch>
-      {{ item.pool_property }}
-      {{ poolData }}
+      <!-- {{ item.pool_property }}
+      {{ poolData }} -->
 
       <el-select
         v-model="item.pool_property"

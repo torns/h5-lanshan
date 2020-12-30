@@ -71,7 +71,7 @@ export default {
       if (this.params.pool_property) {
         this.setPoolData({
           id: this.params.pool_property,
-          value: data.pool_value,
+          value: data.id,
         });
       }
       // 跳转

@@ -24,8 +24,8 @@
             <div
               class="item-info-message"
               :class="'ellipsis-' + d.rows"
-              v-for="d in params.info"
-              :key="item.id"
+              v-for="(d,dIndex) in params.info"
+              :key="dIndex"
               :style="{ fontSize: d.fontSize + 'px', color: d.color }"
             >
               <i
@@ -84,7 +84,7 @@ export default {
       if (this.params.pool_property) {
         this.setPoolData({
           id: this.params.pool_property,
-          value: data.pool_value,
+          value: data.id,
         });
       }
       this.jump(this.params.jump);

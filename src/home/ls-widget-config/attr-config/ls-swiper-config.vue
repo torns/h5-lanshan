@@ -113,9 +113,9 @@
             @click="$refs['jump'].open()"
           ></i>
         </el-form-item>
-        <el-form-item label="数据池赋值数据" prop="pool_value">
+        <el-form-item label="数据池赋值数据" prop="id">
           <el-input
-            v-model="cloneData.pool_value"
+            v-model="cloneData.id"
             size="small"
             style="width: 250px"
           ></el-input>

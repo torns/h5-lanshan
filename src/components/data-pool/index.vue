@@ -53,7 +53,7 @@
       </div>
       <div class="f16 lb-2 mb5 theme lh-20">数据池配置当前物料</div>
       <div class="f12 lb-2 mb25 theme lh-20">
-        配置后，在点击物料时，会把数据pool_value字段赋值给选择的数据池数据
+        配置后，在点击物料时，会把数据id字段赋值给选择的数据池数据
       </div>
       <div class="flex-center">
         <el-select
