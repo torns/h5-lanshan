@@ -3,16 +3,7 @@ export let fontStyle = {
     fontSize: 12,
     letterSpacing: 0,
     fontWeight: 400,
-    color:'#000',
-    // backgroundColor: {
-    //     angle: 180,
-    //     list: [
-    //         {
-    //             color: "#000",
-    //             proportion: 30,
-    //         },
-    //     ],
-    // }
+    color: '#000',
 }
 
 // 背景初始样式 (通用)
@@ -35,16 +26,7 @@ export let TopBarFontStyle = {
     fontSize: 17,
     letterSpacing: 0,
     fontWeight: 600,
-    color:'#000',
-    // backgroundColor: {
-    //     angle: 180,
-    //     list: [
-    //         {
-    //             color: "#000",
-    //             proportion: 30,
-    //         },
-    //     ],
-    // }
+    color: '#000',
 }
 
 // 初始字体渐变色（按钮）
@@ -52,16 +34,7 @@ export let btnFontStyle = {
     fontSize: 12,
     letterSpacing: 0,
     fontWeight: 400,
-    color:'#000',
-    // backgroundColor: {
-    //     angle: 180,
-    //     list: [
-    //         {
-    //             color: "#fff",
-    //             proportion: 30,
-    //         },
-    //     ],
-    // }
+    color: '#000',
 }
 
 // 背景初始样式 （按钮）
@@ -109,26 +82,26 @@ export let sudokuList = [
     },
 ]
 
-// 全局图标数组
+// 图标库
 export let iconList = [
     // 播放量
     {
-        name:'pause',
-        icon:'icon-pause'
+        icon: 'icon-pause'
+    },
+    // 播放
+    {
+        icon: 'icon-bofang'
     },
     // 价格
     {
-        name:'price',
-        icon:'icon-Price'
+        icon: 'icon-Price'
     },
     // 热度
     {
-        name:'hot',
-        icon:'icon-ee-pushline-hot-topic'
+        icon: 'icon-ee-pushline-hot-topic'
     },
     // 点赞
     {
-        name:'zan',
-        icon:'icon-zan'
+        icon: 'icon-zan'
     },
 ]

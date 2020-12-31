@@ -119,7 +119,59 @@ let widgets = [
             }
         }
     },
+    // 列表
+    {
+        name: 'ls-list',
+        label: '列表',
+        x: 0,
+        y: 0,
+        w: 375,
+        h: 772,
+        icon: 'icon-pubuliu',
+        params: {
+            imgType: 'default',
+            imgSize: 60,
+            proportion: 80,  // 左右布局占比
+            distance: 0,    // 单项垂直间距
+            info: [],
+            // 跳转
+            jump: _.cloneDeep(jumpData),
+            // 静态数据
+            list: [
+                {
+                    name: '国潮',
+                    url: "http://116.62.142.85:8090/baseImg/flow-1.jpg",
+                },
+                {
+                    name: '天涯海角',
+                    url: "http://116.62.142.85:8090/baseImg/flow-2.jpg",
+                },
+                {
+                    name: '11.11',
+                    url: "http://116.62.142.85:8090/baseImg/flow-3.jpg",
+                },
+                {
+                    name: '重阳',
+                    url: "http://116.62.142.85:8090/baseImg/flow-4.jpg",
+                },
+                {
+                    name: '端午',
+                    url: "http://116.62.142.85:8090/baseImg/flow-5.jpg",
+                },
+                {
+                    name: '中秋',
+                    url: "http://116.62.142.85:8090/baseImg/flow-6.jpg",
+                },
+            ],
 
+            // 接口配置数据
+            dataType: 0,
+            source: {
+                id: '',
+                data: []
+            }
+        }
+    },
     // 魔方导航
     {
         name: 'ls-sudoku',

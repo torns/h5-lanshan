@@ -1,0 +1,215 @@
+<template>
+  <div class="ls-list-config">
+    <el-form
+      ref="form"
+      :model="config"
+      label-width="100px"
+      label-position="left"
+    >
+      <el-form-item label="图片类型">
+        <el-radio-group v-model="config.imgType">
+          <el-radio-button label="default">图片</el-radio-button>
+          <el-radio-button label="portrait">头像</el-radio-button>
+          <!-- <el-radio-button label=""><i class="iconfont icon-delete"></i></el-radio-button> -->
+        </el-radio-group>
+      </el-form-item>
+      <el-form-item label="图片尺寸">
+        <el-slider v-model="config.imgSize" :min="10" :max="100"></el-slider>
+      </el-form-item>
+      <el-form-item label="布局占比">
+        <el-slider v-model="config.proportion" :min="0" :max="100"></el-slider>
+      </el-form-item>
+      <el-form-item label="垂直间距">
+        <el-slider v-model="config.distance" :min="0" :max="20"></el-slider>
+      </el-form-item>
+      <el-form-item label="跳转" prop="url">
+        <i
+          class="iconfont icon-tiaozhuan f20 pointer"
+          @click="$refs['jump'].open()"
+        ></i>
+      </el-form-item>
+      <el-form-item label="自定义字段">
+        <operation-list v-model="config.info" @edit="editOpen" @add="addAttr()">
+          <template v-slot="{ item }">
+            <div class="flex pt5 pb5 f13 f-bold lb-1">
+              <div class="flex-1 flex-center">{{ item.name }}</div>
+              <div class="flex-1 flex-center">{{ item.attr }}</div>
+            </div>
+          </template>
+        </operation-list>
+        <list-config-attr ref="attr"></list-config-attr>
+      </el-form-item>
+      <jump ref="jump" v-model="config.jump"></jump>
+      <el-form-item label="数据类型">
+        <el-radio v-model="config.dataType" :label="0">静态数据</el-radio>
+        <el-radio v-model="config.dataType" :label="1">接口数据</el-radio>
+      </el-form-item>
+      <!-- 静态数据配置 -->
+      <template v-if="!config.dataType">
+        <el-form-item label="瀑布流列表">
+          <operation-list v-model="config.list" @edit="open" @add="add">
+            <template v-slot="{ item }">
+              <div class="pt5 pb5 f13 f-bold lb-1">
+                {{ item.name || "轮播图" }}
+              </div>
+            </template>
+          </operation-list>
+        </el-form-item>
+      </template>
+      <!-- 接口数据配置 -->
+      <template v-else>
+        <div class="conf-btn" @click="sourceShow = true">配置接口数据</div>
+        <source-list
+          v-if="sourceShow"
+          :show.sync="sourceShow"
+          :id="config.source.id"
+          @select="select"
+        ></source-list>
+      </template>
+    </el-form>
+
+    <!-- 编译 -->
+    <el-dialog
+      width="25%"
+      :visible.sync="show"
+      :close-on-click-modal="false"
+      :append-to-body="true"
+    >
+      <div slot="title" class="dialog-title">编辑数据源</div>
+      <el-form
+        :model="cloneData"
+        ref="ruleForm"
+        label-width="120px"
+        class="demo-ruleForm"
+      >
+        <el-form-item label="名字" prop="name">
+          <el-input
+            v-model="cloneData.name"
+            size="small"
+            style="width: 250px"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="跳转地址" prop="path">
+          <el-input
+            v-model="cloneData.path"
+            size="small"
+            style="width: 250px"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="图片地址" prop="url">
+          <Imgpond :count="1" v-model="cloneData.url" />
+        </el-form-item>
+
+        <el-form-item
+          v-for="(d, i) in config.info"
+          :key="i"
+          :label="d.name"
+          :prop="d.attr"
+        >
+          <el-input
+            v-model="cloneData[d.attr]"
+            size="small"
+            style="width: 250px"
+          ></el-input>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="show = false">取 消</el-button>
+        <el-button type="primary" @click="submit">确 定</el-button>
+      </span>
+    </el-dialog>
+  </div>
+</template>
+
+<script>
+import { getRandomCode } from "@/utils/tools";
+import { remoteGetById } from "@/api/remote";
+import { getResultData } from "@/utils/source";
+import jump from "@/components/jump";
+import operationList from "@/components/operation-list";
+import sourceList from "@/components/source/source-list";
+
+export default {
+  name: "ls-list-config",
+  components: {
+    jump,
+    sourceList,
+    operationList,
+  },
+  props: {
+    params: {
+      type: Object,
+    },
+  },
+  data() {
+    return {
+      editIndex: 0,
+      cloneData: {},
+      show: false,
+      sourceShow: false,
+    };
+  },
+  computed: {
+    config() {
+      return this.params;
+    },
+  },
+  methods: {
+    open(i) {
+      this.editIndex = i;
+      this.cloneData = this._.cloneDeep(this.config.list[i]);
+      this.show = true;
+    },
+    submit() {
+      this.$refs["ruleForm"].validate((valid) => {
+        if (valid) {
+          this.$set(this.config.list, this.editIndex, this.cloneData);
+          this.show = false;
+        } else {
+          return false;
+        }
+      });
+    },
+    add() {
+      if (this.config.list.length == 20) {
+        this.$notify({
+          message: "最多只能添加20张图片哦",
+          type: "warning",
+          offset: 100,
+          duration: 1000,
+        });
+        return;
+      }
+      this.config.list.push({});
+    },
+    addAttr() {
+      if (this.config.info.length == 5) {
+        this.$notify({
+          message: "最多只能添加5列信息哦",
+          type: "warning",
+          offset: 100,
+          duration: 1000,
+        });
+        return;
+      }
+      this.$refs["attr"].open("add", this.config);
+    },
+    editOpen(i) {
+      this.$refs["attr"].open("edit", this.config, i);
+    },
+    select(id) {
+      this.config.source.id = id;
+      this.getSourceData(id);
+    },
+    async getSourceData(id) {
+      let res = await remoteGetById({ id });
+      this.params.source.data = await getResultData(res.data);
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.ls-list-config {
+}
+</style>
