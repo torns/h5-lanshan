@@ -65,6 +65,7 @@ export default {
     },
     usePageModel(page) {
       delete page.id;
+      delete page._id;
       delete page.name;
       this.resetProject(page);
       this.show = false;
@@ -87,10 +88,12 @@ export default {
     flex-basis: 33%;
 
     .page {
+      width: 200px;
+      box-shadow: 9px 5px 9px rgba(0, 0, 0, 0.2);
+
       .page-title {
         width: 210px;
         height: 45px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       }
     }
   }

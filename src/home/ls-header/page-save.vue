@@ -52,7 +52,7 @@
 <script>
 import domtoimage from "dom-to-image";
 import { mapGetters, mapActions } from "vuex";
-import { pageAdd, pageEdit, pageGetList } from "@/api/page";
+import { pageAdd, pageEdit, pageGetList, pageGetById } from "@/api/page";
 import { base64ToImg } from "@/api/tool";
 import { poolChange } from "@/api/pool";
 import uploadImageContainer from "@/components/container/upload-image-container";
@@ -89,11 +89,11 @@ export default {
     ...mapActions(["resetProject"]),
     save() {
       this.createImg();
-      let view = this.project.view;
+      let id = this.project.id;
       this.config = {
-        title: view ? "修改页面" : "保存页面",
-        type: view ? "edit" : "add",
-        name: view ? this.project.name : "add",
+        title: id ? "修改页面" : "保存页面",
+        type: id ? "edit" : "add",
+        name: id ? this.project.name : "add",
       };
       this.show = true;
     },
@@ -114,20 +114,18 @@ export default {
     async add() {
       let result;
       let cover = await base64ToImg({ data: this.coverBase });
-
       this.$set(this.project, "cover", cover.data);
+      let project = this._.cloneDeep(this.project);
 
       if (this.config.type == "add") {
-        result = await pageAdd(this.project);
+        result = await pageAdd(project);
       } else {
-        result = await pageEdit(this.project);
+        result = await pageEdit(project);
       }
+
       if (result.status == 10000) {
-        // 保存项目数据池
-        await poolChange({ id: this.project.id, list: this.poolData });
-
-        this.resetProject(result.data);
-
+        let page = await pageGetById({ id: result.id });
+        this.resetProject(page.data);
         this.$notify({
           title: "保存成功",
           message: "页面已保存成功，赶快用手机扫二维码预览吧",

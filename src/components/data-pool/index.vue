@@ -71,7 +71,6 @@
           </el-option>
         </el-select>
       </div>
-      <!-- {{ poolData }} -->
       <span slot="footer" class="dialog-footer">
         <el-button @click="show = false">取 消</el-button>
         <el-button type="primary" @click="submit">确 定</el-button>
@@ -122,12 +121,12 @@ export default {
       handler(newVal, oldVal) {
         console.log("触发");
 
-        this.replacePool(newVal);
+        this.resetPool(newVal);
       },
     },
   },
   methods: {
-    ...mapMutations(["replacePool"]),
+    ...mapMutations(["resetPool"]),
     add() {
       this.poolData.push({
         id: getRandomCode(8),

@@ -147,6 +147,7 @@ export default {
     right: 0;
     bottom: 0;
     overflow: auto;
+    padding-top: 50px;
 
     // 隐藏滚动条
     &::-webkit-scrollbar {
@@ -157,7 +158,7 @@ export default {
       position: relative;
       width: 375px;
       min-height: 667px;
-      margin: 50px auto;
+      margin: 0 auto;
       box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
       background-color: #fff;
 

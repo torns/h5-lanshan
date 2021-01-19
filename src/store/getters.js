@@ -9,7 +9,7 @@ export default {
     widgetLocation: state => state.common.widgetLocation,
     widgetRef: state => state.common.widgetRef,
     showConfig: state => state.common.showConfig,
-    poolData: state => state.pool.poolData,
+    poolData: state => state.common.project.pool,
     viewProject: state => state.view.viewProject,
     viewPage: state => state.view.viewPage,
     widgetPage: state => {

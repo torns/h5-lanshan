@@ -14,7 +14,7 @@ export async function getSourceData(option) {
         let params = option.params.map(item => {
             let result = { key: item.key }
             if (item.custom) {
-                let data = store.state.pool.poolData.find(d => d.id == item.pool_property.id)
+                let data = store.getters.poolData.find(d => d.id == item.pool_property.id)
                 result.value = data.value
             } else {
                 result.value = item.value

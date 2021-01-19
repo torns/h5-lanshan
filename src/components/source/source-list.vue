@@ -100,7 +100,12 @@ export default {
       });
     },
     add() {
-      this.option = { type: "add", method: "get", code: "return data" };
+      this.option = {
+        type: "add",
+        method: "get",
+        code: "return data",
+        params: [],
+      };
       this.editShow = true;
     },
     select() {

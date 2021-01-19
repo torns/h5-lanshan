@@ -1,5 +1,4 @@
 import { getRandomCode } from '@/utils/tools.js'
-import { poolGetById } from '@/api/pool.js'
 import controls from '@/config/controls'
 import _ from 'lodash';
 
@@ -11,7 +10,6 @@ const state = {
     currentWidget: {},     // 当前拖拽物料
     chooseWidget: {},      // 当前操作物料
     widgetList: [],        // 物料选择列表
-    // controlList: [],    // 控件选择列表
     widgetRef: {},         // page页面widget的ref集合
     widgetLocation: {},    // 拖拽物料入页面位置
     showConfig: false,     // 物料配置显隐
@@ -118,29 +116,31 @@ const mutations = {
 
         // 刷新 vue-grid-layout 布局
         state.widgetRef.gridLayout.layoutUpdate()
-    }
+    },
+    // 重置数据池
+    resetPool(state, list) {
+        state.project.pool = list
+    },
+    // 数据池数据更新
+    setPoolData(state, config) {
+        let item = state.project.pool.find(item => item.id == config.id)
+        item.value = config.value
+    },
 }
 
 const actions = {
     // 重置项目
     async resetProject({ state, commit }, project) {
-        console.log('重置项目');
-        console.log(project);
-
         if (project) {
             state.project = project
-            // 查询重置项目所属数据池
-            let res = await poolGetById({ id: project.id })
-            commit('replacePool', res.data.list)
             // 跳转首页
             state.widgetPage = project.pages[0]
         } else {
             state.project = {
-                id: getRandomCode(12),     // 项目id
                 name: '',          // 项目名字
-                pages: [],
-                controls: controls,  // 控件
-
+                pages: [],           // 页面集合
+                controls: controls,  // 控件集合
+                pool: [],            // 数据池
             }
             state.widgetPage = state.project.pages[0]
             addPage(state, true)

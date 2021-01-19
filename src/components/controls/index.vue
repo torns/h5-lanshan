@@ -25,6 +25,9 @@ export default {
   computed: {
     ...mapGetters(["project", "widgetPage"]),
     params() {
+      console.log('.....');
+      console.log(this.project.controls);
+      
       return this.project.controls.topBar.params;
     },
   },
