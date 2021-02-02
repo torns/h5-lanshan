@@ -1,6 +1,6 @@
 <template>
   <div class="ls-title">
-    <span :style="styleContent"> {{ params.text }} </span>
+    <span :style="styleContent"> {{ params.value }} </span>
   </div>
 </template>
 

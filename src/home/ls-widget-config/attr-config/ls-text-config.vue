@@ -1,9 +1,9 @@
 <template>
   <div class="ls-text-config">
     <el-form ref="form" :model="config" label-width="120px" label-position='left'>
-      <el-form-item props="text" label="文字：">
+      <el-form-item props="value" label="文字：">
         <el-input
-          v-model="config.text"
+          v-model="config.value"
           size="small"
           type="textarea"
           rows="4"

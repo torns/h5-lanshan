@@ -5,7 +5,7 @@
       :style="{
         borderRadius: params.radius + 'px',
       }"
-      :src="params.url"
+      :src="params.value"
       alt=""
     />
   </div>

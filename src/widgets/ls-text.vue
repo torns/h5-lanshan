@@ -6,7 +6,7 @@
         fontSize: params.fontSize + 'px',
       }"
     >
-      {{ params.text }}
+      {{ params.value }}
     </p>
   </div>
 </template>

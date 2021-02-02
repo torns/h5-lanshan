@@ -15,8 +15,8 @@
           :max="40"
         ></el-input-number>
       </el-form-item>
-      <el-form-item proos="url" label="图片：">
-         <Imgpond :count="1" v-model="config.url" />
+      <el-form-item proos="value" label="图片：">
+         <Imgpond :count="1" v-model="config.value" />
       </el-form-item>
     </el-form>
   </div>

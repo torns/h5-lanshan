@@ -6,8 +6,8 @@
       label-width="90px"
       label-position="left"
     >
-      <el-form-item props="text" label="文字：">
-        <el-input v-model="config.text" size="small"></el-input>
+      <el-form-item props="value" label="文字：">
+        <el-input v-model="config.value" size="small"></el-input>
       </el-form-item>
       <el-form-item proos="height" label="高度：">
         <el-slider v-model="config.height" :min="10" :max="200"></el-slider>

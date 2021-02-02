@@ -16,7 +16,7 @@ let widgets = [
         h: 666,
         icon: 'icon-hebingxingzhuang',
         params: {
-            url: 'https://st-gdx.dancf.com/gaodingx/0/uxms/design/20200910-175637-128e.png',
+            value: 'https://st-gdx.dancf.com/gaodingx/0/uxms/design/20200910-175637-128e.png',
             radius: 0,
         }
     },
@@ -30,7 +30,7 @@ let widgets = [
         h: 70,
         icon: 'icon-wenzi',
         params: {
-            text: "此生来生都愿识尽世间好人，读尽世间好书，看尽世间好山水，天上风景再好，从不羡慕。",
+            value: "此生来生都愿识尽世间好人，读尽世间好书，看尽世间好山水，天上风景再好，从不羡慕。",
             color: "#3c3c3c",
             fontSize: 14,
         }
@@ -45,7 +45,7 @@ let widgets = [
         h: 27,
         icon: 'icon-biaoti',
         params: {
-            text: "标题",
+            value: "标题",
             indentation: 0,
             fontStyle: _.cloneDeep(TopBarFontStyle),
         }
@@ -63,7 +63,7 @@ let widgets = [
             width: 100,
             height: 50,
             radius: 0,
-            text: "测试按钮",
+            value: "测试按钮",
             fontStyle: _.cloneDeep(btnFontStyle),
             backgroundStyle: _.cloneDeep(btnBackgroundStyle),
         }
