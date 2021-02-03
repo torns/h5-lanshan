@@ -112,8 +112,6 @@
 </template>
 
 <script>
-import { getRandomCode } from "@/utils/tools";
-import { remoteGetById } from "@/api/remote";
 import { getResultData } from "@/utils/source";
 import jump from "@/components/jump";
 import operationList from "@/components/operation-list";
@@ -192,8 +190,7 @@ export default {
       this.getSourceData(id);
     },
     async getSourceData(id) {
-      let res = await remoteGetById({ id });
-      this.params.source.data = await getResultData(res.data);
+      this.params.source.data = await getResultData(id);
     },
   },
 };

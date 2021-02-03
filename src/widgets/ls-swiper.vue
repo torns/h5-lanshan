@@ -23,7 +23,6 @@
 <script>
 import config from "@/mixin/config";
 import { mapMutations } from "vuex";
-import { remoteGetById } from "@/api/remote";
 import { getResultData } from "@/utils/source";
 import materialSwiper from "@/components/material/material-swiper";
 
@@ -62,8 +61,7 @@ export default {
   methods: {
     ...mapMutations(["resetWidgetView", "setPoolData"]),
     async initSourceData(id) {
-      let res = await remoteGetById({ id });
-      this.params.source.data = await getResultData(res.data);
+      this.params.source.data = await getResultData(id);
       console.log(this.params.source);
     },
     clickItem(data) {

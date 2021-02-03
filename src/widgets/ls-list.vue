@@ -82,7 +82,6 @@
 <script>
 import config from "@/mixin/config";
 import { mapMutations } from "vuex";
-import { remoteGetById } from "@/api/remote";
 import { getResultData } from "@/utils/source";
 import materialWaterfall from "@/components/material/material-waterfall";
 import { iconList } from "@/config/initData";
@@ -110,9 +109,7 @@ export default {
     ...mapMutations(["resetWidgetView", "setPoolData", "resetView"]),
     async initSourceData(id) {
       this.loading = true;
-      let res = await remoteGetById({ id });
-
-      this.params.source.data = await getResultData(res.data);
+      this.params.source.data = await getResultData(id);
       this.loading = false;
     },
     clickItem(data) {

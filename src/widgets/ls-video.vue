@@ -14,7 +14,6 @@ import "video.js/dist/video-js.css";
 import { videoPlayer } from "vue-video-player";
 import config from "@/mixin/config";
 import { mapMutations } from "vuex";
-import { remoteGetById } from "@/api/remote";
 import { getResultData } from "@/utils/source";
 
 export default {
@@ -75,8 +74,7 @@ export default {
   methods: {
     ...mapMutations(["resetWidgetView", "setPoolData"]),
     async initSourceData(id) {
-      let res = await remoteGetById({ id });
-      this.params.source.data = await getResultData(res.data);
+      this.params.source.data = await getResultData(id);
       // 设置远程数据返回播放地址
       this.playerOptions.sources[0].src = this.params.source.data.url;
     },

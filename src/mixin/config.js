@@ -1,7 +1,6 @@
 import { mapGetters, mapMutations } from "vuex";
 import { isNull } from '@/utils/tools.js'
 import wx from 'weixin-js-sdk';
-import { remoteGetById } from "@/api/remote";
 import { getResultData } from "@/utils/source";
 
 export default {
@@ -76,8 +75,7 @@ export default {
         },
         // 获取远程数据
         async getSourceData() {
-            let res = await remoteGetById({ id });
-            this.params.source.data = await getResultData(res.data);
+            this.params.source.data = await getResultData(id);
         }
     }
 }

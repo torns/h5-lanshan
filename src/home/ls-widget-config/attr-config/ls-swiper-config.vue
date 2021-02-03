@@ -134,7 +134,6 @@
 </template>
 
 <script>
-import { getRandomCode } from "@/utils/tools";
 import operationList from "@/components/operation-list";
 import sourceList from "@/components/source/source-list";
 import jump from "@/components/jump";

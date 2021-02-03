@@ -25,11 +25,12 @@
           <el-input v-model="project.name" size="small"></el-input>
         </el-form-item>
         <el-form-item label="页面封面：">
-          <upload-image-container
+           <Imgpond :count="1" v-model="project.cover" />
+          <!-- <upload-image-container
             v-loading="loading"
             element-loading-spinner="el-icon-loading"
             :imgUrl="coverBase"
-          ></upload-image-container>
+          ></upload-image-container> -->
         </el-form-item>
         <span class="lb-1 f12 theme"
           >canvas 绘图有时候会出现空白现象，如封面空白请重新打开弹窗</span
@@ -39,7 +40,6 @@
         <el-button @click="show = false">取 消</el-button>
         <el-button
           type="primary"
-          :disabled="loading"
           element-loading-spinner="el-icon-loading"
           @click="submit"
           >确 定</el-button
@@ -88,7 +88,6 @@ export default {
   methods: {
     ...mapActions(["resetProject"]),
     save() {
-      this.createImg();
       let id = this.project.id;
       this.config = {
         title: id ? "修改页面" : "保存页面",
@@ -113,8 +112,8 @@ export default {
     },
     async add() {
       let result;
-      let cover = await base64ToImg({ data: this.coverBase });
-      this.$set(this.project, "cover", cover.data);
+      // let cover = await base64ToImg({ data: this.coverBase });
+      // this.$set(this.project, "cover", cover.data);
       let project = this._.cloneDeep(this.project);
 
       if (this.config.type == "add") {

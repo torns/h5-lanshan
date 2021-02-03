@@ -126,6 +126,23 @@ const mutations = {
         let item = state.project.pool.find(item => item.id == config.id)
         item.value = config.value
     },
+    // 新增远程数据
+    addRemote(state, data) {
+        state.project.remotes.push(data)
+    },
+    // 修改远程数据
+    editRemote(state, data) {
+        let remotes = state.project.remotes
+        for (let i = 0; i < remotes.length; i++) {
+            if (remotes[i].id == data.id) {
+                remotes[i] = data
+            }
+        }
+    },
+    // 根据 id 查询远程数据
+    getByIdRemote(state, id) {
+        return state.project.remotes.find(remote => remote.id == id)
+    }
 }
 
 const actions = {
@@ -137,10 +154,11 @@ const actions = {
             state.widgetPage = project.pages[0]
         } else {
             state.project = {
-                name: '',          // 项目名字
+                name: '',            // 项目名字
                 pages: [],           // 页面集合
                 controls: controls,  // 控件集合
                 pool: [],            // 数据池
+                remotes: [],          // 远程接口
             }
             state.widgetPage = state.project.pages[0]
             addPage(state, true)
