@@ -16,9 +16,9 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["viewProject"]),
+    ...mapGetters(["project"]),
     page() {
-      let page = this.viewProject.pages && this.viewProject.pages[0];
+      let page = this.project.pages && this.project.pages[0];
       return page;
     },
   },

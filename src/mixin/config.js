@@ -24,7 +24,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(["widgetList", "viewProject"]),
+        ...mapGetters(["widgetList", "project"]),
         itemParams() {
             return this.item.params
         },
@@ -57,7 +57,7 @@ export default {
                 // 预览模式
                 if (this.view) {
                     let index;
-                    this.viewProject.pages.map((page, i) => {
+                    this.project.pages.map((page, i) => {
                         if (page.id == data.pathData)
                             index = i
                     })

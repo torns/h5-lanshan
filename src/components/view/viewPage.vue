@@ -1,8 +1,8 @@
 <template>
   <div class="viewPage">
     <ls-top-bar-control
-      v-if="viewProject.controls"
-      :params="viewProject.controls.topBar.params"
+      v-if="project.controls"
+      :params="project.controls.topBar.params"
       :text="page.name"
       :back="true"
     ></ls-top-bar-control>
@@ -57,7 +57,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["viewProject"]),
+    ...mapGetters(["project"]),
   },
   created() {
     this.cPage = this._.cloneDeep(this.page);

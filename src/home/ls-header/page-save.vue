@@ -24,7 +24,7 @@
         >
           <el-input v-model="project.name" size="small"></el-input>
         </el-form-item>
-        <el-form-item label="页面封面：">
+        <el-form-item label="页面封面：">          
            <Imgpond :count="1" v-model="project.cover" />
           <!-- <upload-image-container
             v-loading="loading"

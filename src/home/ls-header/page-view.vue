@@ -30,7 +30,7 @@ export default {
   methods: {
     createQr() {
       let id = this.project.id;
-      if (!this.project.view) {
+      if (!this.project.id) {
         this.imgUrl = "";
         return;
       }

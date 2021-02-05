@@ -21,16 +21,16 @@ export default {
     this.init();
   },
   computed: {
-    ...mapGetters(["viewProject", "viewPage"]),
+    ...mapGetters(["viewPage"]),
   },
   methods: {
-    ...mapActions(["initView"]),
+    ...mapActions(["resetProject"]),
     async init() {
       this.loading = true;
       let id = this.$route.query.id;
       let res = await pageGetById({ id });
       if (res.status == "10000") {
-        this.initView(res.data);
+        this.resetProject(res.data);
         this.loading = false;
       }
     },
