@@ -74,5 +74,5 @@ export async function getResultData(id) {
     let option = store.getters.project.remotes.find(remote => remote.id == id)
     let data = await getSourceData(option)
     let result = await filterData(data, option.code)
-    return result
+    return result 
 }
