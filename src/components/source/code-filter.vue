@@ -1,15 +1,6 @@
 <template>
   <div class="code-filter">
-    <el-dialog
-      title="数据过滤器"
-      width="60%"
-      :show="show"
-      :visible.sync="visible"
-      :append-to-body="true"
-      :close-on-click-modal="false"
-      @close="$emit('update:show', false)"
-      append-to-body
-    >
+    <el-dialog title="数据过滤器" width="60%" :show="show" :visible.sync="visible" :append-to-body="true" :close-on-click-modal="false" @close="$emit('update:show', false)" append-to-body>
       <div class="flex">
         <div class="flex-1 pr20">
           <div class="dialog-title">过滤器输入数据</div>
@@ -28,12 +19,7 @@
               <span class="row-fun"> function </span>
               <span class="row-text">{{ `filter ( data ) { ` }}</span>
             </div>
-            <codemirror
-              ref="myEditor"
-              v-model="filterCode"
-              @change="changeCode"
-              :options="cmOptions"
-            ></codemirror>
+            <codemirror ref="myEditor" v-model="filterCode" @change="changeCode" :options="cmOptions"></codemirror>
             <div class="code-row"><span class="row-text">}</span></div>
           </div>
           <div class="dialog-button mt10 mb35" @click="perform">
@@ -52,7 +38,6 @@
 
 <script>
 import { codemirror } from "vue-codemirror-lite";
-import { filterData } from "@/utils/source";
 import codeView from "@/components/source/code-view";
 
 // 主题样式

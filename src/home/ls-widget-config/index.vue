@@ -1,10 +1,7 @@
 <template>
   <div class="widget-config">
-    <div
-      class="widget-config-body"
-      :class="showConfig ? 'widget-config-body-active' : ''"
-    >
-      <attr-config v-if="showConfig"></attr-config>
+    <div class="widget-config-body" :class="showConfig ? 'widget-config-body-active' : ''">
+      <config-container v-if="showConfig"></config-container>
     </div>
   </div>
 </template>
@@ -37,7 +34,7 @@ export default {
   .widget-config-body {
     position: absolute;
     top: 0;
-    transform: translateX(100%) ;
+    transform: translateX(100%);
     transition: 0.5s;
     width: 99%;
     height: 100%;

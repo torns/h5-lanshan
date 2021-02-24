@@ -1,6 +1,6 @@
 <template>
   <div class="widget-list">
-    <div class="widget-list-title flex-center f14 theme mb20">常用模块test</div>
+    <div class="widget-list-title flex-center f14 theme mb20">物料库</div>
     <div
       class="widget-list-item"
       v-for="item in widgetList"

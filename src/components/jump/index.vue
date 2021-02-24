@@ -12,7 +12,7 @@
         <el-radio-button :label="0">无</el-radio-button>
         <el-radio-button :label="1">站外链接</el-radio-button>
         <el-radio-button :label="2">内部链接</el-radio-button>
-        <el-radio-button :label="3">内部小程序</el-radio-button>
+        <!-- <el-radio-button :label="3">内部小程序</el-radio-button> -->
       </el-radio-group>
       <div class="mt20">
         <el-form

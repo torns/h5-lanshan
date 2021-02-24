@@ -1,6 +1,6 @@
 <template>
   <div class="haeder">
-    <!-- dooring -->
+    <!-- h5-lanshan -->
     <div class="haeder-left"></div>
     <div class="header-main flex-center flex-1">
       <page-room></page-room>

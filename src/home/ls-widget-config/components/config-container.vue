@@ -1,26 +1,13 @@
 <template>
   <div class="attr-config">
     <div class="config-title">
-      <span
-        class="config-title-span flex-center"
-        :class="[page == 0 ? 'config-title-active' : '']"
-        @click="page = 0"
-        >组件配置</span
-      >
-      <span
-        class="config-title-span flex-center"
-        :class="[page == 1 ? 'config-title-active' : '']"
-        @click="page = 1"
-        >页面配置</span
-      >
+      <span class="config-title-span flex-center" :class="[page == 0 ? 'config-title-active' : '']" @click="page = 0">组件</span>
+      <!-- <span class="config-title-span flex-center" :class="[page == 1 ? 'config-title-active' : '']" @click="page = 1">数据</span> -->
+      <span class="config-title-span flex-center" :class="[page == 2 ? 'config-title-active' : '']" @click="page = 2">页面</span>
     </div>
     <!-- 组件配置 -->
     <div v-if="page == 0" class="config-body">
-      <component
-        v-if="isConfig && chooseWidget && chooseWidget.name"
-        :is="configName"
-        :params="widgetParams"
-      ></component>
+      <component v-if="isConfig && chooseWidget && chooseWidget.name" :is="configName" :params="widgetParams"></component>
       <!-- 未找到组件 -->
       <div v-else class="config-empty flex-column row-center">
         <img src="@/assets/base/empty.jpg" alt="" />
@@ -28,50 +15,28 @@
         <span class="config-empty-info">拖拽组件来配置你的页面吧!</span>
       </div>
       <!-- 按钮列 -->
-      <div
-        v-if="isConfig && chooseWidget"
-        class="config-operation flex row-around"
-      >
+      <div v-if="isConfig && chooseWidget" class="config-operation flex row-around">
         <el-popover class="item" trigger="hover" content="视图高度自适应">
-          <div
-            class="config-operation-btn flex-center"
-            style="background: #82aaf1"
-            slot="reference"
-            @click="resetWidgetView(chooseWidget.i)"
-          >
+          <div class="config-operation-btn flex-center" style="background: #82aaf1" slot="reference" @click="resetWidgetView(chooseWidget.i)">
             <i class="iconfont icon-shitu"></i>
           </div>
         </el-popover>
         <el-popover class="item" trigger="hover" content="数据池">
-          <div
-            class="config-operation-btn flex-center"
-            style="background: #82aaf1"
-            slot="reference"
-            @click="$refs['pool'].open()"
-          >
+          <div class="config-operation-btn flex-center" style="background: #82aaf1" slot="reference" @click="$refs['pool'].open()">
             <i class="iconfont icon-shuju"></i>
           </div>
         </el-popover>
         <el-popover class="item" trigger="hover" content="删除">
-          <div
-            class="config-operation-btn flex-center"
-            style="background: #ee98a2"
-            slot="reference"
-            @click="deleteWidget(chooseWidget.i)"
-          >
+          <div class="config-operation-btn flex-center" style="background: #ee98a2" slot="reference" @click="deleteWidget(chooseWidget.i)">
             <i class="iconfont icon-delete"></i>
           </div>
         </el-popover>
       </div>
     </div>
-    <div v-if="page == 1">
+    <div v-if="page == 2">
       <page-config></page-config>
     </div>
-    <data-pool
-      ref="pool"
-      v-if="chooseWidget.params"
-      v-model="chooseWidget.params.pool_property"
-    ></data-pool>
+    <data-pool ref="pool" v-if="chooseWidget.params" v-model="chooseWidget.params.pool_property"></data-pool>
   </div>
 </template>
 
@@ -79,7 +44,7 @@
 import { mapGetters, mapMutations } from "vuex";
 import dataPool from "@/components/data-pool";
 export default {
-  name: "attr-config",
+  name: "config-container",
   components: {
     dataPool,
   },
@@ -97,10 +62,6 @@ export default {
       return this.chooseWidget?.name + "-config";
     },
     widgetParams() {
-      console.log("widgetParams...");
-
-      console.log(this.chooseWidget.params);
-
       return this.chooseWidget.params ? this.chooseWidget.params : {};
     },
   },
@@ -125,6 +86,7 @@ export default {
     font-size: 16px;
     margin-bottom: 10px;
     letter-spacing: 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 
     .config-title-span {
       flex: 1;
