@@ -14,7 +14,6 @@
       :imgWidth="params.imgWidth"
       :imgHeight="params.imgHeight"
       :spaceBetween="params.spaceBetween"
-      :contraction="contraction"
       @clickItem="clickItem"
     />
   </div>

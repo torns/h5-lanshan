@@ -1,49 +1,27 @@
 <template>
   <div class="page-save">
     <span class="header-text" @click="save">保存</span>
-    <el-dialog
-      :title="config.title"
-      :visible.sync="show"
-      width="23%"
-      :append-to-body="true"
-    >
-      <el-form
-        :model="project"
-        ref="ruleForm"
-        label-width="95px"
-        class="demo-ruleForm"
-      >
-        <el-form-item
-          label="项目名称："
-          prop="name"
-          :rules="{
+    <el-dialog :title="config.title" :visible.sync="show" width="23%" :append-to-body="true">
+      <el-form :model="project" ref="ruleForm" label-width="95px" class="demo-ruleForm">
+        <el-form-item label="项目名称：" prop="name" :rules="{
             required: true,
             message: '名称不能为空',
             trigger: 'label',
-          }"
-        >
+          }">
           <el-input v-model="project.name" size="small"></el-input>
         </el-form-item>
-        <el-form-item label="页面封面：">          
-           <Imgpond :count="1" v-model="project.cover" />
-          <!-- <upload-image-container
-            v-loading="loading"
-            element-loading-spinner="el-icon-loading"
-            :imgUrl="coverBase"
-          ></upload-image-container> -->
+        <el-form-item label="页面封面：" prop="cover" :rules="{
+            required: true,
+            message: '封面不能为空',
+            trigger: 'label',
+          }">
+          <Imgpond :count="1" v-model="project.cover" />
         </el-form-item>
-        <span class="lb-1 f12 theme"
-          >canvas 绘图有时候会出现空白现象，如封面空白请重新打开弹窗</span
-        >
+        <!-- <span class="lb-1 f12 theme">canvas 绘图有时候会出现空白现象，如封面空白请重新打开弹窗</span> -->
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="show = false">取 消</el-button>
-        <el-button
-          type="primary"
-          element-loading-spinner="el-icon-loading"
-          @click="submit"
-          >确 定</el-button
-        >
+        <el-button type="primary" element-loading-spinner="el-icon-loading" @click="submit">确 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -124,6 +102,7 @@ export default {
 
       if (result.status == 10000) {
         let page = await pageGetById({ id: result.id });
+
         this.resetProject(page.data);
         this.$notify({
           title: "保存成功",

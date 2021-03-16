@@ -10,7 +10,6 @@
 <script>
 import config from "@/mixin/config";
 import {
-  gradientChannel,
   fontStyleChannel,
   widgetBackgroundChannel,
 } from "@/utils/styleChannel";

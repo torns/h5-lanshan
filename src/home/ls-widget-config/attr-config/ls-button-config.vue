@@ -12,8 +12,8 @@
       <el-form-item proos="height" label="高度：">
         <el-slider v-model="config.height" :min="10" :max="200"></el-slider>
       </el-form-item>
-      <el-form-item proos="width" label="宽度：">
-        <el-slider v-model="config.width" :min="10" :max="300"></el-slider>
+      <el-form-item proos="width" label="宽度(%)：">
+        <el-slider v-model="config.width" :min="10" :max="100"></el-slider>
       </el-form-item>
       <el-form-item proos="radius" label="原角：">
         <el-slider v-model="config.radius" :min="0" :max="30"></el-slider>

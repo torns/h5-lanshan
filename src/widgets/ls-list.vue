@@ -16,8 +16,7 @@
         onerror="this.src = 'http://116.62.142.85:8090/baseImg/img-err.jpg'"
         :src="item.url"
         :style="{
-          width: params.imgSize + 'px',
-          height: params.imgSize + 'px',
+          width: params.imgSize * than + 'px',
           borderRadius: params.imgType == 'default' ? '5px' : '50%',
         }"
       />

@@ -13,7 +13,7 @@ export default {
             type: Boolean,
             default: false
         },
-        contraction: {
+        than: {
             type: Number,
             default: 1
         }
@@ -41,8 +41,10 @@ export default {
         ...mapMutations(["selectedPage"]),
         // 跳转
         jump(data) {
-            console.log('jump');
-            console.log(data);
+            // 不跳转
+            if (data.type == 0) {
+                return
+            }
 
             // 跳转外链
             if (data.type == 1) {

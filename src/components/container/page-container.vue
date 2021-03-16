@@ -1,11 +1,6 @@
 <template>
-  <div class="page-container">
-    <img
-      :src="item.cover"
-      alt=""
-      ref="img"
-      onerror="this.src = 'http://116.62.142.85:8090/baseImg/page-default.jpg'"
-    />
+  <div class="page-container" ref="page">
+    <img :src="item.cover" ref="img" onerror="this.src='http://116.62.142.85:8090/baseImg/page-default.jpg'" />
     <div class="obscuration"></div>
     <div class="operation flex row-between">
       <!-- 修改页面 -->
@@ -16,18 +11,11 @@
       <div class="operation-item" title="扫码浏览" @click="$emit('viewPage')">
         <el-popover placement="top" width="150" trigger="hover">
           <img class="qr-img" :src="qr" alt="" />
-          <i
-            class="iconfont icon-saoyisaoerweimasaomasaomiao"
-            slot="reference"
-          ></i>
+          <i class="iconfont icon-saoyisaoerweimasaomasaomiao" slot="reference"></i>
         </el-popover>
       </div>
       <!-- 使用模板 -->
-      <div
-        class="operation-item"
-        title="使用页面模板"
-        @click="$emit('usePageModel')"
-      >
+      <div class="operation-item" title="使用页面模板" @click="$emit('usePageModel')">
         <i class="iconfont icon-copy"></i>
       </div>
     </div>
@@ -64,14 +52,14 @@ export default {
 <style lang="scss" scoped>
 .page-container {
   position: relative;
-  max-height: 300px;
+  height: 200px;
   width: 200px;
   overflow-y: auto;
   overflow: hidden;
 
   &:hover {
     img {
-      transform: translateY(-100%) translateY(290px);
+      transform: translateY(-100%) translateY(200px);
     }
 
     .obscuration {
@@ -101,7 +89,7 @@ export default {
 
   .operation {
     position: absolute;
-    top: 150px;
+    top: 100px;
     left: 50%;
     transform: translateX(-50%);
     width: 150px;

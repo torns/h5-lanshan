@@ -1,10 +1,10 @@
 <template>
-  <div class="body" :style="`height:${imgHeight * contraction}px;`" :class="{ crown: crown }">
+  <div class="body" :class="{ crown: crown }">
     <!-- {{ center }} -->
     <swiper class="swiper-wrap" ref="cardSwiper" :options="swiperOption">
       <swiper-slide
         class="swiper-item"
-        :style="`width:${imgWidth}%;height:${imgHeight * contraction}px;padding-right: ${spaceBetween}px;`"
+        :style="`width:${imgWidth}%;padding-right: ${spaceBetween}px;`"
         v-for="(item, index) in list"
         :key="index"
       >
@@ -100,7 +100,7 @@ export default {
       default: false,
     },
     // 屏幕收缩比
-    contraction: {
+    than: {
       type: Number,
       default: 1,
     },

@@ -44,9 +44,6 @@
       <el-form-item label="图片宽度(%)">
         <el-slider v-model="config.imgWidth" :min="1" :max="100"></el-slider>
       </el-form-item>
-      <el-form-item label="图片高度">
-        <el-slider v-model="config.imgHeight" :min="50" :max="300"></el-slider>
-      </el-form-item>
       <el-form-item label="图片间距">
         <el-slider
           v-model="config.spaceBetween"

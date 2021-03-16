@@ -9,7 +9,7 @@
     >
       <div class="page-room">
         <div
-          class="container felx-center mb15"
+          class="container felx-center mb30"
           v-for="(item, index) in list"
           :key="index"
         >
@@ -83,13 +83,14 @@ export default {
   flex-wrap: wrap;
   max-height: 500px;
   overflow: auto;
+  padding-top: 20px;
 
   .container {
     flex-basis: 33%;
 
     .page {
       width: 200px;
-      box-shadow: 9px 5px 9px rgba(0, 0, 0, 0.2);
+      box-shadow: 9px 5px 30px rgba(0, 0, 0, 0.2);
 
       .page-title {
         width: 210px;

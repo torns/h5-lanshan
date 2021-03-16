@@ -1,18 +1,7 @@
 <template>
-  <div class="ls-notice-bar">
-    <van-notice-bar
-      :left-icon="params.icon"
-      :scrollable="false"
-      :style="styleContainer"
-      :color="params.color"
-    >
-      <!-- <slot name="left-icon">1</slot> -->
-      <van-swipe
-        vertical
-        class="notice-swipe"
-        :autoplay="3000"
-        :show-indicators="false"
-      >
+  <div class="ls-notice-bar" :style="styleHeight">
+    <van-notice-bar :left-icon="params.icon" :scrollable="false" :style="styleContainer" :color="params.color">
+      <van-swipe vertical class="notice-swipe" :style="styleHeight" :autoplay="3000" :show-indicators="false">
         <van-swipe-item v-for="item in params.list">{{
           item.text
         }}</van-swipe-item>
@@ -32,6 +21,13 @@ export default {
     styleContainer() {
       return {
         ...widgetBackgroundChannel(this.params.backgroundStyle),
+        ...this.styleHeight
+      };
+    },
+    styleHeight() {
+      return {
+        height: `${50 * this.than}px !important`,
+        lineHeight: `${50 * this.than}px !important`,
       };
     },
   },
@@ -46,17 +42,6 @@ export default {
 
 .ls-notice-bar {
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  height: 50px;
-
-  .notice-swipe {
-    height: 50px;
-    line-height: 50px;
-  }
-
-  .van-notice-bar {
-    height: 50px;
-    line-height: 50px;
-  }
 
   i {
     font-size: 20px !important;

@@ -1,11 +1,9 @@
 <template>
-  <div class="ls-text swiget">
-    <p
-      :style="{
+  <div class="ls-text swiget flex-center">
+    <p :style="{
         color: params.color,
         fontSize: params.fontSize + 'px',
-      }"
-    >
+      }">
       {{ params.value }}
     </p>
   </div>
@@ -25,7 +23,9 @@ export default {
 
 <style lang="scss" scoped>
 .ls-text {
+  height: 100%;
   padding: 0 10px;
   line-height: 30px;
+
 }
 </style>

@@ -50,22 +50,55 @@ let widgets = [
             fontStyle: _.cloneDeep(TopBarFontStyle),
         }
     },
-    // 按钮
+
+    // 轮播
     {
-        name: 'ls-button',
-        label: '按钮',
+        name: 'ls-swiper',
+        label: '轮播',
         x: 0,
         y: 0,
         w: 375,
-        h: 50,
-        icon: 'icon-anniu',
+        h: 195,
+        icon: 'icon-lunbo2',
         params: {
-            width: 100,
-            height: 50,
-            radius: 0,
-            value: "测试按钮",
-            fontStyle: _.cloneDeep(btnFontStyle),
-            backgroundStyle: _.cloneDeep(btnBackgroundStyle),
+            autoplay: true,
+            loop: true,
+            center: true,
+            pagination: true,
+            imgRadius: false,
+            crown: false,
+            imgWidth: 100,
+            imgHeight: 180,
+            spaceBetween: 0,
+            paginationTop: 150,
+            fontStyle: fontStyle,
+            jump: _.cloneDeep(jumpData),
+            list: [
+                {
+                    name: "轮播1",
+                    url: "https://st-gdx.dancf.com/gaodingx/0/uxms/design/20200408-165620-bd6c.png",
+                    jump: _.cloneDeep(jumpData),
+                    text: ''
+                },
+                {
+                    name: "轮播2",
+                    url: "https://st-gdx.dancf.com/gaodingx/0/uxms/design/20200220-111024-dded.png",
+                    jump: _.cloneDeep(jumpData),
+                    text: ''
+                },
+                {
+                    name: "轮播3",
+                    url: "https://st-gdx.dancf.com/gaodingx/0/uxms/design/20200602-134906-2aed.png",
+                    jump: _.cloneDeep(jumpData),
+                    text: ''
+                },
+            ],
+            // 接口配置数据
+            dataType: 0,
+            source: {
+                id: '',
+                data: []
+            }
         }
     },
     // 瀑布流
@@ -193,54 +226,22 @@ let widgets = [
             list: sudokuList,
         }
     },
-    // 轮播
+    // 按钮
     {
-        name: 'ls-swiper',
-        label: '轮播',
+        name: 'ls-button',
+        label: '按钮',
         x: 0,
         y: 0,
         w: 375,
-        h: 180,
-        icon: 'icon-lunbo2',
+        h: 50,
+        icon: 'icon-anniu',
         params: {
-            autoplay: true,
-            loop: true,
-            center: true,
-            pagination: true,
-            imgRadius: false,
-            crown: false,
-            imgWidth: 100,
-            imgHeight: 180,
-            spaceBetween: 0,
-            paginationTop: 150,
-            fontStyle: fontStyle,
-            jump: _.cloneDeep(jumpData),
-            list: [
-                {
-                    name: "轮播1",
-                    url: "https://st-gdx.dancf.com/gaodingx/0/uxms/design/20200408-165620-bd6c.png",
-                    jump: _.cloneDeep(jumpData),
-                    text: ''
-                },
-                {
-                    name: "轮播2",
-                    url: "https://st-gdx.dancf.com/gaodingx/0/uxms/design/20200220-111024-dded.png",
-                    jump: _.cloneDeep(jumpData),
-                    text: ''
-                },
-                {
-                    name: "轮播3",
-                    url: "https://st-gdx.dancf.com/gaodingx/0/uxms/design/20200602-134906-2aed.png",
-                    jump: _.cloneDeep(jumpData),
-                    text: ''
-                },
-            ],
-            // 接口配置数据
-            dataType: 0,
-            source: {
-                id: '',
-                data: []
-            }
+            width: 100,
+            height: 50,
+            radius: 0,
+            value: "测试按钮",
+            fontStyle: _.cloneDeep(btnFontStyle),
+            backgroundStyle: _.cloneDeep(btnBackgroundStyle),
         }
     },
     // 通知栏         
@@ -283,7 +284,7 @@ let widgets = [
         y: 0,
         w: 375,
         h: 210,
-        icon: 'icon-quanping',
+        icon: 'icon-shipin',
         params: {
             // 接口配置数据
             dataType: 0,
@@ -302,7 +303,7 @@ let widgets = [
         y: 0,
         w: 375,
         h: 66,
-        icon: 'icon-quanping',
+        icon: 'icon-yinpin',
         params: {
             title: '音乐',
             theme: '#fff',

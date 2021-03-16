@@ -7,7 +7,6 @@
 <script>
 import config from "@/mixin/config";
 import {
-  gradientChannel,
   fontStyleChannel,
   widgetBackgroundChannel,
 } from "@/utils/styleChannel";
@@ -21,8 +20,8 @@ export default {
   computed: {
     styleContainer() {
       return {
-        width: `${this.params.width}px`,
-        height: `${this.params.height}px`,
+        width: `${this.params.width}%`,
+        height: `${this.params.height * this.than}px`,
         borderRadius: `${this.params.radius}px`,
         ...widgetBackgroundChannel(this.params.backgroundStyle),
       };

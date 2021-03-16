@@ -1,59 +1,27 @@
 <template>
   <div class="canvas">
     <div class="canvas-screen" ref="screen">
-      <div
-        id="pageCanvas"
-        ref="page"
-        class="canvas-page"
-        :style="pageBackground"
-        @drop="drop($event)"
-        @dragover.prevent
-      >
+      <div id="pageCanvas" ref="page" class="canvas-page" :style="pageBackground" @drop="dropInPage($event)" @dragover.prevent>
+        <!-- 页面插件 -->
         <controls></controls>
-        <!-- 页面内容容器 -->
+        <!-- 页面 -->
         <div class="page-wrapper">
-          <grid-layout
-            ref="gridLayout"
-            class="canvas-page-list"
-            :layout.sync="widgetPage.list"
-            :col-num="375"
-            :max-w="1"
-            :row-height="1"
-            :is-draggable="true"
-            :is-resizable="true"
-            :is-mirrored="false"
-            :vertical-compact="true"
-            :margin="[0, 0]"
-            :use-css-transforms="true"
-          >
-            <grid-item
-              class="canvas-page-item"
-              v-for="item in widgetPage.list"
-              :x="item.x"
-              :y="item.y"
-              :w="item.w"
-              :h="item.h"
-              :i="item.i"
-              :key="item.i"
-            >
-              <div
-                class="widget-view"
-                :id="item.i"
-                ref="widgetList"
-                @click="setConfig(item.i)"
-              >
-                <component
-                  :ref="item.id"
-                  :is="item.name"
-                  :item="item"
-                ></component>
+          <grid-layout ref="gridLayout" class="canvas-page-list" :layout.sync="widgetPage.list" :col-num="375" :max-w="1" :row-height="1" :is-draggable="true" :is-resizable="true" :is-mirrored="false"
+            :vertical-compact="true" :margin="[0, 0]" :use-css-transforms="true">
+            <!-- 物料 -->
+            <grid-item class="canvas-page-item" v-for="item in widgetPage.list" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i">
+              <!-- 物料模板 -->
+              <div class="widget-view" :id="item.i" ref="widgetList" @click="setConfig(item.i)">
+                <component :ref="item.id" :is="item.name" :item="item"></component>
               </div>
+              <!-- 物料操作栏 -->
               <div class="widget-operation">
-                <div class="widget-operation-btns">
-                  <i
-                    class="iconfont icon-caozuo"
-                    @click="setConfig(item.i)"
-                  ></i>
+                <div class="widget-operation-btns flex col-center">
+                  <!-- 属性设置 -->
+                  <i class="iconfont icon-caozuo" @click="setConfig(item.i)"></i>
+                  <!-- 复制 -->
+                  <i class="iconfont icon-copy f18" @click="copyWidget(item)"></i>
+                  <!-- 删除 -->
                   <i class="iconfont icon-lajitong"></i>
                 </div>
               </div>
@@ -99,7 +67,7 @@ export default {
   methods: {
     ...mapMutations(["pushWidgetPageList", "setChooseWidget", "setWidgetRef"]),
     // 组件拖入页面
-    drop(e) {
+    dropInPage(e) {
       e.preventDefault();
       let top = e.layerY - this.widgetLocation.top;
       let bottom = e.layerY + this.widgetLocation.bottom;
@@ -113,10 +81,14 @@ export default {
       }
       this.pushWidgetPageList(this.currentWidget);
     },
-    // 设置组件属性
+    // 设置物料属性
     setConfig(id) {
       let widget = this.widgetPage.list.find((item) => item.i == id);
       widget && this.setChooseWidget(widget);
+    },
+    // 复制物料
+    copyWidget(widget) {
+      this.pushWidgetPageList(widget);
     },
   },
 };
