@@ -320,6 +320,10 @@ page {
     color: rgba(32, 39, 47, 1);
 }
 
+.f-theme {
+    color: $theme-color;
+}
+
 // font-size 10~100 px
 @for $i from 10 through 100 {
     .f#{$i} {

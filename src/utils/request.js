@@ -1,12 +1,27 @@
 // http.js
 import axios from 'axios'
 
-axios.defaults.timeout = 20000
+import store from '../store'
 
-axios.defaults.headers.post['Content-Type'] = 'application/json'
+// create an axios instance
+const request = axios.create({
+  baseURL: process.env.VUE_APP_BASE_URL, // url = base url + request url
+  timeout: 20000 // request timeout
+})
 
 
-axios.defaults.baseURL = process.env.VUE_APP_BASE_URL
+
+// request interceptor
+request.interceptors.request.use(
+  config => {
+    let token = store.getters.token
+    if (token) {
+      config.headers['Authorization'] = token
+    }
+
+    return config
+  }
+)
 
 // get 请求
 export function Get(
@@ -14,7 +29,7 @@ export function Get(
   params = {}
 ) {
   return new Promise((resolve, reject) => {
-    axios.get(url, {
+    request.get(url, {
       params
     }).then((res) => {
       resolve(res.data)
@@ -27,14 +42,12 @@ export function Get(
 // post请求
 export function Post(
   url,
-  data = {},
+  params = {},
 ) {
   return new Promise((resolve, reject) => {
-    axios({
+    request.post({
       url,
-      method: 'post',
-      // 发送的数据
-      data
+      params
     }).then(res => {
       resolve(res.data)
     })

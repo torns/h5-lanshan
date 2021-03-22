@@ -17,7 +17,7 @@ import lsWidgetPage from "@/home/ls-widget-page";
 import lsWidgetConfig from "@/home/ls-widget-config";
 
 export default {
-  name: "Home",
+  name: "home",
   components: { lsHeader, lsWidgetList, lsWidgetPage, lsWidgetConfig },
   created() {
     this.resetProject();
