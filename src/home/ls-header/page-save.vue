@@ -10,8 +10,17 @@
           }">
           <el-input v-model="project.name" size="small"></el-input>
         </el-form-item>
-        <el-form-item label="页面封面：" prop="cover" :rules="{
+        <el-form-item label="项目类型：" prop="type" :rules="{
             required: true,
+            message: '名称不能为空',
+            trigger: 'label',
+          }">
+          <el-select v-model="project.type" placeholder="请选择类型" style="width:100%">
+            <el-option v-for="item in pageType" :key="item.value" :label="item.label" :value="item.value" />
+          </el-select>
+        </el-form-item>
+        <el-form-item label="页面封面：" prop="cover" :rules="{
+            required: false,
             message: '封面不能为空',
             trigger: 'label',
           }">
@@ -34,6 +43,7 @@ import { pageAdd, pageEdit, pageGetList, pageGetById } from "@/api/page";
 import { base64ToImg } from "@/api/tool";
 import { poolChange } from "@/api/pool";
 import uploadImageContainer from "@/components/container/upload-image-container";
+import { pageType } from "@/config/dict";
 
 export default {
   name: "page-save",
@@ -46,6 +56,7 @@ export default {
       loading: false,
       config: {},
       coverBase: "",
+      pageType,
     };
   },
   computed: {

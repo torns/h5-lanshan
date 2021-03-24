@@ -3,12 +3,14 @@
     <!-- h5-lanshan -->
     <div class="haeder-left"></div>
     <div class="header-main flex-center flex-1">
-      <page-room></page-room>
+      <span class="header-text" @click="openRoom">页面库</span>
       <page-save></page-save>
       <page-view></page-view>
       <div class="header-text" @click="resetProject()">重置</div>
+      <div class="header-text" @click="test()">测试</div>
     </div>
     <div class="header-right"></div>
+    <page-room ref="room"></page-room>
   </div>
 </template>
 
@@ -17,6 +19,7 @@ import { mapGetters, mapActions } from "vuex";
 import pageRoom from "@/home/ls-header/page-room";
 import pageSave from "@/home/ls-header/page-save";
 import pageView from "@/home/ls-header/page-view";
+import { test } from "@/api/user";
 
 export default {
   name: "ls-header",
@@ -29,6 +32,12 @@ export default {
   },
   methods: {
     ...mapActions(["resetProject"]),
+    openRoom(){
+      this.$refs['room'].open()
+    },
+    test() {
+      test().then((res) => {});
+    },
   },
 };
 </script>

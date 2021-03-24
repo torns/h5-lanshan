@@ -2,7 +2,7 @@ import { login, getUserInfo, test } from "@/api/user";
 import { setLocalStorage, getLocalStorage, removeLocalStorage } from '@/utils/storage'
 const state = {
     token: getLocalStorage('token'),
-    userInfo: getLocalStorage('userInfo')
+    userInfo: getLocalStorage('userInfo') || {}
 }
 
 const mutations = {
@@ -17,9 +17,10 @@ const mutations = {
 const actions = {
     async userLogin({ state, commit }, form) {
         let res = await login(form)
+        
         if (res.status == 10000) {
             commit('SET_TOKEN', res.token)
-            commit('SET_TOKEN', res.userInfo)
+            commit('SET_USERINFO', res.userInfo)
             setLocalStorage('token', res.token)
             setLocalStorage('userInfo', res.userInfo)
             

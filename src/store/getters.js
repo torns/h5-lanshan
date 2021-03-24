@@ -2,6 +2,8 @@ import { pageBackgroundChannel } from '@/utils/styleChannel'
 import { setLocalStorage } from "@/utils/storage";
 
 export default {
+    token: state => state.user.token,
+    userInfo: state => state.user.userInfo,
     project: state => state.common.project,
     currentWidget: state => state.common.currentWidget,
     chooseWidget: state => state.common.chooseWidget,
@@ -10,7 +12,6 @@ export default {
     widgetRef: state => state.common.widgetRef,
     showConfig: state => state.common.showConfig,
     poolData: state => state.common.project.pool,
-    viewPage: state => state.view.viewPage,
     widgetPage: state => {
         setLocalStorage('page', state.common.widgetPage)
         return state.common.widgetPage

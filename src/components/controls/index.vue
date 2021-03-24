@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters } from "vuex";
 import lsTopBarControl from "@/components/controls/ls-top-bar-control";
 
 export default {
